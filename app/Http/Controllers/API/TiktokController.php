@@ -42,30 +42,13 @@ class TiktokController extends Controller
         $decrypted = Crypt::decryptString($url);
         $filename= $name.' '.date('d-m-Y Hi').' '.uniqid().'.mp4';
         $url = $decrypted;
-        $size = $this->get_size($url);
-        header('Content-Length: '.$size);
-        header("Accept-Ranges: 0-".$size);
+        $headers = get_headers($url, 1);
+        header('Content-Length: '.$headers["Content-Length"]);
         header("Content-Transfer-Encoding: Binary");
-        header('Content-Type: application/octet-stream'); 
+        header('Content-Type: '.$headers["Content-Type"]); 
         header("Content-disposition: attachment; filename=\"$filename\""); 
        
         echo readfile($url);
 
-    }
-
-    public function get_size($url) {
-        $my_ch = curl_init();
-        curl_setopt($my_ch, CURLOPT_URL,$url);
-        curl_setopt($my_ch, CURLOPT_HEADER, true);
-        curl_setopt($my_ch, CURLOPT_NOBODY, true);
-        curl_setopt($my_ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($my_ch, CURLOPT_TIMEOUT, 10);
-        $r = curl_exec($my_ch);
-        foreach(explode("\n", $r) as $header) {
-            if(strpos($header, 'Content-Length:') === 0) {
-                return trim(substr($header,16));
-            }
-        }
-        return '';
     }
 }
