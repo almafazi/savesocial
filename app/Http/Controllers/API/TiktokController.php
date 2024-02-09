@@ -44,6 +44,7 @@ class TiktokController extends Controller
         $url = $decrypted;
         $size = $this->get_size($url);
         header('Content-Length: '.$size);
+        header("Accept-Ranges: 0-".$size);
         header("Content-Transfer-Encoding: Binary");
         header('Content-Type: application/octet-stream'); 
         header("Content-disposition: attachment; filename=\"$filename\""); 
