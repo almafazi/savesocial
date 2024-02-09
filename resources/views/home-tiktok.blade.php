@@ -586,7 +586,11 @@
                           .readText()
                           .then(
                               cliptext =>
-                                  (document.getElementById('main_page_text').value = cliptext),
+                                  {
+                                    $('#clear').removeClass('d-none');
+                                    $('#paste').addClass('d-none');
+                                    document.getElementById('main_page_text').value = cliptext
+                                  },
                                   err => console.log(err)
                           );
                   });
