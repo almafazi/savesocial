@@ -558,16 +558,6 @@
         <div class="copyright"> Copyright 2018-2024 </div>
       </div>
     </footer>
-    <div id="adBottom">
-      <div class="ad_sticky">
-        <ins class="adsbygoogle" id="ad_bottom" data-full-width-responsive="true"></ins>
-        <div class="ad-close" onclick="document.getElementById('adBottom').style.display = 'none';document.getElementById('footer').style.marginBottom='0'">
-          <svg width="22px" height="22px" viewBox="0 0 16 16" class="bi bi-x" fill="#000" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </div>
-      </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
 
@@ -596,7 +586,7 @@
                           .readText()
                           .then(
                               cliptext =>
-                                  (document.getElementById('main_page_text').innerText = cliptext),
+                                  (document.getElementById('main_page_text').value = cliptext),
                                   err => console.log(err)
                           );
                   });
@@ -657,7 +647,7 @@
               } else if(data.status != 'picker') {
                 $('#target-wrapper').append(`
                   <div class="row">
-                    <div class="col-md-6 d-flex justify-content-end">
+                    <div class="offset-md-3 col-md-3 mb-4 d-flex justify-content-center">
                       <div class="post-item">
                         <img width="100%" src="${data.metadata.cover.url_list[0]}" />
                       </div>
