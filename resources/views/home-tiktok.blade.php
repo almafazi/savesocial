@@ -696,7 +696,14 @@
               $("#target-wrapper .custom-loader").addClass('d-none');
             },
             error: function (data) {
-                
+              $('#target-wrapper').append(`
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="alert alert-danger">Too Many Attempts... please try again in ~10 seconds</div>
+                    </div>
+                  </div>
+                `);
+              $("#target-wrapper .custom-loader").addClass('d-none');
             }
         });
       });
