@@ -155,10 +155,7 @@
           <div id="menu" class="pure-menu pure-menu-horizontal">
             <ul class="pure-menu-list u-oh">
               <li class="pure-menu-item">
-                <a href="/id/how-to-download-tiktok-video" class="pure-menu-link">Cara unduh Tiktok?</a>
-              </li>
-              <li class="pure-menu-item">
-                <a href="/id/download-tiktok-mp3" class="pure-menu-link">Download MP3 Tiktok</a>
+                <a href="#tutor" class="pure-menu-link">Cara unduh Tiktok?</a>
               </li>
             </ul>
           </div>
@@ -190,7 +187,7 @@
       <section>
         <div class="splash-container" id="splash" hx-ext="include-vals">
           <div id="splash_wrapper" class="splash" style="max-width: 1680px;">
-            <h1 class="splash-head hide-after-request" id="bigmessage"> Download video Tiktok </h1>
+            <h1 class="splash-head hide-after-request" id="bigmessage"> Download Foto & Video Tiktok </h1>
             <div class="error-container-wrapper">
               <div id="errorContainer"></div>
             </div>
@@ -261,7 +258,7 @@
           </div>
         </div>
       </section>
-      <div class="content-visibility">
+      <div class="content-visibility" id="tutor">
         <section class="text">
           <div class="text__container">
             <h2>Download video Tiktok tanpa watermark gratis</h2>
@@ -629,7 +626,7 @@
             { value: 1e15, symbol: "P" },
             { value: 1e18, symbol: "E" }
           ];
-          const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
+          const regexp = "/\.0+$|(?<=\.[0-9]*[1-9])0+$/";
           const item = lookup.findLast(item => num >= item.value);
           return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
         }
@@ -640,11 +637,11 @@
             data: formData,
             dataType: 'json',
             success: function (data) {
-              if(data.length == 0) {
+              if(data.status == 'error') {
                 $('#target-wrapper').append(`
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="alert alert-danger">Video tiktok tidak ditemukan</div>
+                      <div class="alert alert-danger">Foto atau Video tiktok tidak ditemukan</div>
                     </div>
                   </div>
                 `);
@@ -673,11 +670,24 @@
               `);
 
               } else {
+                $('#target-wrapper').append(`<div class="row"></div>`);
+
+                $('#target-wrapper .row').append(`
+                  <div class="offset-md-3 col-md-6 mb-5">
+                      <h3>${data.metadata.author}</h3>
+                      <p>${data.metadata.desc}</p>
+                      <div class="mb-2">
+                      <i class="ph ph-bookmark"></i> <span class="me-2">${nFormatter(data.metadata.statistics.collect_count)}</span>
+                      <i class="ph ph-chat-circle-dots"></i> <span class="me-2">${nFormatter(data.metadata.statistics.comment_count)}</span>
+                      <i class="ph ph-download"></i> <span class="me-2">${nFormatter(data.metadata.statistics.download_count)}</span>
+                      <i class="ph ph-play"></i> <span class="me-2">${nFormatter(data.metadata.statistics.play_count)}</span>
+                      <i class="ph ph-share-network"></i> <span class="me-2">${nFormatter(data.metadata.statistics.share_count)}</span>
+                    </div></div><div class="col-md-3"></div>`);
                 data.picker.forEach(function(item, index, arr) {
-                  $('#target-wrapper').append(`
-                      <div class="post-item">
+                  $('#target-wrapper .row').append(`
+                      <div class="col mb-5">
                         <img width="100%" src="${item.url}" />
-                        <a download href="${item.url}" class="button-61 mt-2">DOWNLOAD</a>
+                        <a target="_blank" href="{{ route('frontend.index.tiktok-download-image') }}/${item.download_url}/${data.metadata.author}" class="button-61 mt-2">DOWNLOAD</a>
                       </div>
                   `);
                 });

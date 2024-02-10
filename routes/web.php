@@ -36,6 +36,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
         return view('home-tiktok');
     })->name('index.tiktok');
 
+    Route::get('/tiktok-download-image/{url?}/{name?}', [TiktokController::class, 'download_image'])->name('index.tiktok-download-image');
     Route::get('/tiktok-download/{url?}/{name?}', [TiktokController::class, 'download'])->name('index.tiktok-download');
 
     // Route::get('/', 'FrontendController@index')->name('index');
