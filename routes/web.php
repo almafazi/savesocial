@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\TiktokController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Middleware\RateLimitDownload;
 use Illuminate\Support\Facades\Route;
 
 /*

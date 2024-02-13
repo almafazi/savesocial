@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
-    <title>Download video Tiktok tanpa watermark online - Tiktok downloader gratis</title>
+    <title>Download Video dan Foto Tiktok Tanpa Watermark Gratis</title>
     <meta charset="utf-8">
-    <meta name="description" content="Tiktok downloader tanpa watermark! Download video Tiktok mp4 online dengan 2 ketukan sederhana! Cukup masukkan tautan. Cepat dan gratis untuk digunakan!" />
-    <meta name="author" content="SSSTik.io" />
+    <meta name="description" content="Tiktok Video & Foto Downloader Tanpa Watermark HD Gratis, Cepat dan Simpel!" />
+    <meta name="author" content="SSSTIK" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no" name="viewport" />
-    <meta property="og:title" content="Download video Tiktok tanpa watermark online - Tiktok downloader gratis" />
-    <meta property="og:description" content="Tiktok downloader tanpa watermark! Download video Tiktok mp4 online dengan 2 ketukan sederhana! Cukup masukkan tautan. Cepat dan gratis untuk digunakan!" />
+    <meta property="og:title" content="Download Video dan Foto Tiktok Tanpa Watermark Gratis" />
+    <meta property="og:description" content="Tiktok Video & Foto Downloader Tanpa Watermark HD Gratis, Cepat dan Simpel!" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://ssstik.io/id" />
-    <meta property="og:image" content="https://ssstik.io/images/og.png" />
-    <meta property="og:site_name" content="SSSTik.io" />
+    <meta property="og:url" content="https://wwww-ssstik.com" />
+    <meta property="og:image" content="https://wwww-ssstik.com/images/og.png" />
+    <meta property="og:site_name" content="wwww-ssstik.com" />
     <meta name="google" content="notranslate" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -21,44 +21,13 @@
     <link rel="preconnect" href="//pagead2.googlesyndication.com" crossorigin>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" alt>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" alt>
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" alt>
     <meta name="msapplication-TileColor" content="#472d4e">
     <meta name="theme-color" content="#472d4e">
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180-precomposed.png">
-    <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png">
-    <link rel="icon" sizes="512x512" href="/android-chrome-512x512.png">
-    <link rel="canonical" href="https://ssstik.io/id" />
-    <link rel="alternate" href="https://ssstik.io/en" hreflang="en" />
-    <link rel="alternate" href="https://ssstik.io/ru" hreflang="ru" />
-    <link rel="alternate" href="https://ssstik.io/tr" hreflang="tr" />
-    <link rel="alternate" href="https://ssstik.io/es" hreflang="es" />
-    <link rel="alternate" href="https://ssstik.io/pt" hreflang="pt" />
-    <link rel="alternate" href="https://ssstik.io/fr" hreflang="fr" />
-    <link rel="alternate" href="https://ssstik.io/de" hreflang="de" />
-    <link rel="alternate" href="https://ssstik.io/vi" hreflang="vi" />
-    <link rel="alternate" href="https://ssstik.io/id" hreflang="id" />
-    <link rel="alternate" href="https://ssstik.io/ja" hreflang="ja" />
-    <link rel="alternate" href="https://ssstik.io/ko" hreflang="ko" />
-    <link rel="alternate" href="https://ssstik.io/ar" hreflang="ar" />
-    <link rel="alternate" href="https://ssstik.io/th" hreflang="th" />
-    <link rel="alternate" href="https://ssstik.io/it" hreflang="it" />
-    <link rel="alternate" href="https://ssstik.io/pl" hreflang="pl" />
-    <link rel="alternate" href="https://ssstik.io/ms" hreflang="ms" />
-    <link rel="alternate" href="https://ssstik.io/uk" hreflang="uk" />
-    <link rel="alternate" href="https://ssstik.io/nl" hreflang="nl" />
-    <link rel="alternate" href="https://ssstik.io/ro" hreflang="ro" />
-    <link rel="alternate" href="https://ssstik.io/en" hreflang="x-default" />
     <meta name="lb-version" content="lb4">
     <meta name="apple-itunes-app" content="app-id=1618823987, affiliate-data=ct=smartssstik" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <style>
       #target-wrapper {
         display: flex;
@@ -140,13 +109,10 @@
     </style>
   </head>
   <body class="id bg-grey" id="sss_body">
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3K8RD9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
     <header>
       <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <div class="menu-wrapper">
-          <a class="pure-menu-heading" href="/id">
+          <a class="pure-menu-heading" href="/">
             <div class="sss">
               <img src="/images/logosmall.svg" width="32" height="32" alt="favicon">
               <div> sssTik </div>
@@ -262,7 +228,7 @@
         <section class="text">
           <div class="text__container">
             <h2>Download video Tiktok tanpa watermark gratis</h2>
-            <div class="text__desc"> ssstik.io dapat membantu Anda download video Tiktok tanpa watermark secara gratis. Simpan Tiktok dengan kualitas terbaik dalam format file MP4 dengan resolusi HD. Untuk mengetahui cara menggunakan pengunduh video Tiktok, ikuti petunjuk di bawah ini. </div>
+            <div class="text__desc"> www-ssstik.com dapat membantu Anda download video Tiktok tanpa watermark secara gratis. Simpan Tiktok dengan kualitas terbaik dalam format file MP4 dengan resolusi HD. Untuk mengetahui cara menggunakan pengunduh video Tiktok, ikuti petunjuk di bawah ini. </div>
             <div class="info-arrow"> Sangat sederhana, Anda dapat menyimpan video Anda dalam tiga langkah mudah <img src="/images/infoarrow.svg" alt width="67">
             </div>
           </div>
@@ -355,7 +321,7 @@
               <div class="u-smaller-text flex-1 text-pr align-items-center text text--text">
                 <h3>Cara Download video Tiktok di iPhone? </h3>
                 <p>Jika kamu punya iPhone atau iPad dengan iOS 12 atau lebih lama, kamu tetap dapat download video Tiktok tanpa wm, tetapi kamu harus memasang aplikasi "Documents by Readdle" dari AppStore.</p>
-                <p>Salin tautan video Tiktok dan luncurkan Documents by Readle. Di sudut kanan bawah, kamu akan menemukan simbol browser web. Tekan. Ketika browser terbuka, kunjungi www.ssstik.io dan tempelkan tautan. File akan tersimpan di perangkat kamu.</p>
+                <p>Salin tautan video Tiktok dan luncurkan Documents by Readle. Di sudut kanan bawah, kamu akan menemukan simbol browser web. Tekan. Ketika browser terbuka, kunjungi www.www-ssstik.com dan tempelkan tautan. File akan tersimpan di perangkat kamu.</p>
               </div>
               <div class="d-flex align-items-center text--image">
                 <div class="flex-1 image__wrapper">
@@ -465,90 +431,19 @@
         <div class="flex-1"></div>
         <div class="flex-2">
           <nav class="footer__navigation flex-column">
-            <div class="footer-row row-1">
-              <a href="/contacts" target="_self">Contacts</a>
-              <a href="/id/apk" target="_self">APK</a>
-              <a href="/id/download-tiktok-stories" target="_self">Stories</a>
-            </div>
-            <div class="footer-row row-2">
-              <b>We are not affiliated with Tiktok, Douyin or Bytedance.</b>
-            </div>
             <script type="application/ld+json">
               {
                 "@context": "http://schema.org",
                 "@type": "Organization",
                 "name": "SSSTik",
-                "url": "https://ssstik.io",
-                "logo": "https://ssstik.io/apple-touch-icon-180x180-precomposed.png",
-                "image": "https://ssstik.io/images/og.png",
-                "description": "Fastest Tiktok video downloader! Save your Tiktok videos in two taps, fast and free. With or without a watermark with sss Tiktok mp4 video downloader online",
-                "email": "contact@ssstik.io"
+                "url": "https://wwww-ssstik.com",
+                "logo": "https://wwww-ssstik.com/apple-touch-icon-180x180-precomposed.png",
+                "image": "https://wwww-ssstik.com/images/og.png",
+                "description": "Fastest Tiktok video downloader! Save your Tiktok videos for free without watermark",
+                "email": "contact@wwww-ssstik.com"
               }
             </script>
           </nav>
-        </div>
-        <div class="flex-1 lang-wrapper">
-          <ul id="language-switcher">
-            <li class>
-              <div id="menuLink1"> Bahasa&nbsp;Indonesia‬&nbsp;&nbsp;&nbsp; </div>
-              <ul class="pure-menu-children u-smaller-text u-shadow--black">
-                <li class="pure-menu-item">
-                  <a href="/en" lang="en" class="pure-menu-link">&nbsp;English</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/de" lang="de" class="pure-menu-link">&nbsp;Deutsh</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/es" lang="es" class="pure-menu-link">&nbsp;Español</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/fr" lang="fr" class="pure-menu-link">&nbsp;Français</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/ja" lang="ja" class="pure-menu-link">&nbsp;日本語</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/ko" lang="ko" class="pure-menu-link">&nbsp;한국어</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/pt" lang="pt" class="pure-menu-link">&nbsp;Português&nbsp;(Brasil)</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/ru" lang="ru" class="pure-menu-link">&nbsp;Русский</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/tr" lang="tr" class="pure-menu-link">&nbsp;Türkçe‬‬</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/vi" lang="vi" class="pure-menu-link">&nbsp;Tiếng&nbsp;Việt</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/ar" lang="ar" class="pure-menu-link">&nbsp;العربية</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/th" lang="th" class="pure-menu-link">&nbsp;ไทย</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/it" lang="it" class="pure-menu-link">&nbsp;Italiano</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/pl" lang="pl" class="pure-menu-link">&nbsp;Polskie</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/ms" lang="ms" class="pure-menu-link">&nbsp;Malaysian</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/uk" lang="uk" class="pure-menu-link">&nbsp;Ukrainian</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/nl" lang="nl" class="pure-menu-link">&nbsp;Nederlands</a>
-                </li>
-                <li class="pure-menu-item">
-                  <a href="/ro" lang="ro" class="pure-menu-link">&nbsp;Romanian</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </div>
       </div>
       <div class="text-center">
@@ -663,8 +558,8 @@
                       <i class="ph ph-play"></i> <span class="me-2">${nFormatter(data.metadata.statistics.play_count)}</span>
                       <i class="ph ph-share-network"></i> <span class="me-2">${nFormatter(data.metadata.statistics.share_count)}</span>
                       </div>
-                      <a target="_blank" href="{{ route('frontend.index.tiktok-download') }}/${data.video_data.wm_video_url}/${data.metadata.author}" class="button-61 mt-2">DOWNLOAD VIDEO</a>
-                      <a target="_blank" href="{{ route('frontend.index.tiktok-download') }}/${data.video_data.nwm_video_url}/${data.metadata.author}" class="button-61 mt-2">DOWNLOAD NO WATERMARK</a>
+                      <a target="_blank" href="${data.video_data.wm_video_url}" class="button-61 mt-2">DOWNLOAD VIDEO</a>
+                      <a target="_blank" href="${data.video_data.nwm_video_url}" class="button-61 mt-2">DOWNLOAD NO WATERMARK</a>
                     </div>
                   </div>
               `);

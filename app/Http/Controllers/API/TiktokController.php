@@ -6,9 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class TiktokController extends Controller
 {
+    public function generateDownloadLink($url, $name)
+    {
+        $token = Str::random(16); // Generate a random token
+        // Save the token and other details in the database for validation later
+        // You may want to associate it with the user, URL, and name
+        // ...
+
+        $link = route('frontend.index.tiktok-download-image', ['url' => $url, 'name' => $name, 'token' => $token]);
+
+        return $link;
+    }
+
     public function fetch(Request $request) {
         $url = $request->url;
         
@@ -29,8 +42,8 @@ class TiktokController extends Controller
 
         if($posts['status'] != 'picker' && $posts['status'] != 'error') {
 
-            $posts['video_data']["nwm_video_url"] = Crypt::encryptString($posts['metadata']['play_addr'][0]);
-            $posts['video_data']["wm_video_url"] =  Crypt::encryptString($posts['metadata']['download_addr'][0]);
+            $posts['video_data']["nwm_video_url"] = $this->generateDownloadLink(Crypt::encryptString($posts['metadata']['play_addr'][0]), $posts['metadata']['author']);
+            $posts['video_data']["wm_video_url"] = $this->generateDownloadLink(Crypt::encryptString($posts['metadata']['download_addr'][0]), $posts['metadata']['author']);
     
             unset($posts["metadata"]["download_addr"]);
             unset($posts["metadata"]["play_addr"]);
