@@ -106,6 +106,9 @@
       right: 150px;
     }
       
+    .max-width-content {
+      max-width: 450px;
+    }
     </style>
   </head>
   <body class="id bg-grey" id="sss_body">
@@ -565,10 +568,10 @@
               `);
 
               } else {
-                $('#target-wrapper').append(`<div class="row"></div>`);
+                $('#target-wrapper').append(`<div class="row max-width-content"></div>`);
 
                 $('#target-wrapper .row').append(`
-                  <div class="offset-md-3 col-md-6 mb-5">
+                  <div class="col-md-12 mb-5">
                       <h3>${data.metadata.author}</h3>
                       <p>${data.metadata.desc}</p>
                       <div class="mb-2">
@@ -577,7 +580,7 @@
                       <i class="ph ph-download"></i> <span class="me-2">${nFormatter(data.metadata.statistics.download_count)}</span>
                       <i class="ph ph-play"></i> <span class="me-2">${nFormatter(data.metadata.statistics.play_count)}</span>
                       <i class="ph ph-share-network"></i> <span class="me-2">${nFormatter(data.metadata.statistics.share_count)}</span>
-                    </div></div><div class="col-md-3"></div>`);
+                    </div></div>`);
                 data.picker.forEach(function(item, index, arr) {
                   $('#target-wrapper .row').append(`
                       <div class="col mb-5">
