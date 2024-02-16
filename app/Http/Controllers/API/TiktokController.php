@@ -17,7 +17,7 @@ class TiktokController extends Controller
         // You may want to associate it with the user, URL, and name
         // ...
 
-        $link = route('frontend.index.tiktok-download-image', ['url' => $url, 'name' => $name, 'token' => $token]);
+        $link = route('frontend.index.tiktok-download', ['url' => $url, 'name' => $name, 'token' => $token]);
 
         return $link;
     }
@@ -59,7 +59,7 @@ class TiktokController extends Controller
 
     public function download($url, $name) {
         $decrypted = Crypt::decryptString($url);
-        $filename= $name.' '.date('d-m-Y Hi').' '.uniqid().'.mp4';
+        $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.mp4';
         $url = $decrypted;
         $headers = get_headers($url, 1);
         header('Content-Length: '.$headers["Content-Length"]);
@@ -73,7 +73,7 @@ class TiktokController extends Controller
 
     public function download_image($url, $name) {
         $decrypted = Crypt::decryptString($url);
-        $filename= $name.' '.date('d-m-Y Hi').' '.uniqid().'.jpeg';
+        $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.jpeg';
         $url = $decrypted;
         $headers = get_headers($url, 1);
         header('Content-Length: '.$headers["Content-Length"]);
