@@ -551,7 +551,7 @@
                         <img width="100%" src="${data.metadata.cover.url_list[0]}" />
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <h3>${data.metadata.author}</h3>
                       <p>${data.metadata.desc}</p>
                       <div class="mb-2">
