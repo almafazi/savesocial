@@ -36,6 +36,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     Route::get('/tiktok', function() {
         return view('home-tiktok');
     })->name('index.tiktok');
+    Route::get('/convert', function() {
+        return view('home-convert');
+    })->name('index.convert');
 
     Route::get('/tiktok-download-image/{url?}/{name?}', [TiktokController::class, 'download_image'])->name('index.tiktok-download-image');
     Route::get('/tiktok-download/{url?}/{name?}', [TiktokController::class, 'download'])->name('index.tiktok-download');
