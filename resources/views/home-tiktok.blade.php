@@ -563,6 +563,8 @@
                       </div>
                       <a target="_blank" href="${data.video_data.wm_video_url}" class="button-61 mt-2">DOWNLOAD VIDEO</a>
                       <a target="_blank" href="${data.video_data.nwm_video_url}" class="button-61 mt-2">DOWNLOAD NO WATERMARK</a>
+                      <a target="_blank" href="${data.audio_data.music}" class="button-61 mt-3">DOWNLOAD MP3</a>
+
                     </div>
                   </div>
               `);
