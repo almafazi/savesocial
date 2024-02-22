@@ -40,6 +40,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
         return view('home-convert');
     })->name('index.convert');
 
+    Route::get('/tiktok-download-mp3/{url?}/{name?}', [TiktokController::class, 'download_mp3'])->name('index.tiktok-download-mp3');
     Route::get('/tiktok-download-image/{url?}/{name?}', [TiktokController::class, 'download_image'])->name('index.tiktok-download-image');
     Route::get('/tiktok-download/{url?}/{name?}', [TiktokController::class, 'download'])->name('index.tiktok-download');
 
