@@ -6,6 +6,9 @@
     <meta name="description" content="Tiktok Video & Foto Downloader Tanpa Watermark HD Gratis, Cepat dan Simpel untuk digunakan!" />
     <meta name="author" content="SSSTIK" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no" name="viewport" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="1 days" />
+    <link rel="canonical" href="https://wwww-ssstik.com/" />
     <meta property="og:title" content="Download video TikTok tanpa watermark HD - Downloader TikTok 100% gratis" />
     <meta property="og:description" content="Tiktok Video & Foto Downloader Tanpa Watermark HD Gratis, Cepat dan Simpel untuk digunakan!" />
     <meta property="og:type" content="article" />
