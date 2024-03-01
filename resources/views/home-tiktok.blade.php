@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
-    <title>Download Video dan Foto Tiktok Tanpa Watermark Gratis</title>
+    <title>Snaptik: Tiktok Video dan Foto Downloader Tanpa Watermark Gratis</title>
     <meta charset="utf-8">
     <meta name="description" content="Tiktok Video & Foto Downloader Tanpa Watermark HD Gratis, Cepat dan Simpel!" />
     <meta name="author" content="SSSTIK" />
@@ -15,7 +15,7 @@
     <meta name="google" content="notranslate" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main-modified.css') }}">
     <link rel="preconnect" href="//www.google-analytics.com">
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     <link rel="preconnect" href="//pagead2.googlesyndication.com" crossorigin>
@@ -24,7 +24,6 @@
     <meta name="msapplication-TileColor" content="#472d4e">
     <meta name="theme-color" content="#472d4e">
     <meta name="lb-version" content="lb4">
-    <meta name="apple-itunes-app" content="app-id=1618823987, affiliate-data=ct=smartssstik" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -109,6 +108,13 @@
     .max-width-content {
       max-width: 450px;
     }
+
+    .darkmode-off {
+                    font-size: 22px;
+                    background: aliceblue;
+                    padding: 10px;
+                    border-radius: 50px;
+                  }
     </style>
   </head>
   <body class="id bg-grey" id="sss_body">
@@ -118,7 +124,7 @@
           <a class="pure-menu-heading" href="/">
             <div class="sss">
               <img src="/images/logosmall.svg" width="32" height="32" alt="favicon">
-              <div> sssTik </div>
+              <div> SnapTik </div>
             </div>
           </a>
           <div id="menu" class="pure-menu pure-menu-horizontal">
@@ -126,9 +132,14 @@
               <li class="pure-menu-item">
                 <a href="#tutor" class="pure-menu-link">Cara unduh Tiktok?</a>
               </li>
+              <li class="pure-menu-item">
+                <a href="javascript:;" class="pure-menu-link darkmode-wrapper">
+                  <span class="ph ph-moon darkmode-off"></span>
+                </a>
+              </li>
             </ul>
           </div>
-          <div class="flex-1">
+          <div class="flex-1 d-none">
             <div id="twt_promo">
               <a href="https://play.google.com/store/apps/details?id=com.video.videodownloader_appdl" rel="nofollow noopener" target="_blank" class="download_with_app" id="dwapp">
                 <span> Unduh dengan Aplikasi </span>
@@ -156,7 +167,7 @@
       <section>
         <div class="splash-container" id="splash" hx-ext="include-vals">
           <div id="splash_wrapper" class="splash" style="max-width: 1680px;">
-            <h1 class="splash-head hide-after-request" id="bigmessage"> Download Foto & Video Tiktok </h1>
+            <h1 class="splash-head hide-after-request" id="bigmessage"> Tiktok Foto & Video Downloader no WM </h1>
             <div class="error-container-wrapper">
               <div id="errorContainer"></div>
             </div>
@@ -231,7 +242,7 @@
         <section class="text">
           <div class="text__container">
             <h2>Download video Tiktok tanpa watermark gratis</h2>
-            <div class="text__desc"> www-ssstik.com dapat membantu Anda download video Tiktok tanpa watermark secara gratis. Simpan Tiktok dengan kualitas terbaik dalam format file MP4 dengan resolusi HD. Untuk mengetahui cara menggunakan pengunduh video Tiktok, ikuti petunjuk di bawah ini. </div>
+            <div class="text__desc"> SnapTik dapat membantu Anda download video Tiktok tanpa watermark secara gratis. Simpan Tiktok dengan kualitas terbaik dalam format file MP4 dengan resolusi HD. Untuk mengetahui cara menggunakan pengunduh video Tiktok, ikuti petunjuk di bawah ini. </div>
             <div class="info-arrow"> Sangat sederhana, Anda dapat menyimpan video Anda dalam tiga langkah mudah <img src="/images/infoarrow.svg" alt width="67">
             </div>
           </div>
@@ -324,7 +335,7 @@
               <div class="u-smaller-text flex-1 text-pr align-items-center text text--text">
                 <h3>Cara Download video Tiktok di iPhone? </h3>
                 <p>Jika kamu punya iPhone atau iPad dengan iOS 12 atau lebih lama, kamu tetap dapat download video Tiktok tanpa wm, tetapi kamu harus memasang aplikasi "Documents by Readdle" dari AppStore.</p>
-                <p>Salin tautan video Tiktok dan luncurkan Documents by Readle. Di sudut kanan bawah, kamu akan menemukan simbol browser web. Tekan. Ketika browser terbuka, kunjungi www.www-ssstik.com dan tempelkan tautan. File akan tersimpan di perangkat kamu.</p>
+                <p>Salin tautan video Tiktok dan luncurkan Documents by Readle. Di sudut kanan bawah, kamu akan menemukan simbol browser web. Tekan. Ketika browser terbuka, kunjungi SnapTik dan tempelkan tautan. File akan tersimpan di perangkat kamu.</p>
               </div>
               <div class="d-flex align-items-center text--image">
                 <div class="flex-1 image__wrapper">
@@ -606,6 +617,34 @@
               $("#target-wrapper .custom-loader").addClass('d-none');
             }
         });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+      darkmode = new Darkmode();
+    </script>
+
+    <script>
+      $(document).ready(function() {
+        if(!darkmode.isActivated()) {
+          $('.darkmode-wrapper .ph.ph-sun').removeClass('ph-sun');
+          $('.darkmode-wrapper .ph').addClass('ph-moon');
+        } else {
+          $('.darkmode-wrapper .ph.ph-moon').removeClass('ph-moon');
+          $('.darkmode-wrapper .ph').addClass('ph-sun');
+        };
+      });
+      
+      $('.darkmode-wrapper').click(function(e) {
+        if(darkmode.isActivated()) {
+          darkmode.toggle();
+          $('.darkmode-wrapper .ph.ph-sun').removeClass('ph-sun');
+          $('.darkmode-wrapper .ph').addClass('ph-moon');
+        } else {
+          darkmode.toggle();
+          $('.darkmode-wrapper .ph.ph-moon').removeClass('ph-moon');
+          $('.darkmode-wrapper .ph').addClass('ph-sun');
+        };
       });
     </script>
   </body>
