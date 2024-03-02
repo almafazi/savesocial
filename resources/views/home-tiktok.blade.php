@@ -150,9 +150,11 @@
               </a>
             </div>
           </div>
-          <a href="javascript:;" class="pure-menu-link darkmode-wrapper">
-            <span class="ph ph-moon darkmode-off"></span>
-          </a>
+          <nav id="menu__toggle__wrapper">
+            <a href="javascript:;" class="pure-menu-link darkmode-wrapper">
+              <span class="ph ph-moon darkmode-off"></span>
+            </a>
+          </nav>
           {{-- <nav id="menu__toggle__wrapper">
             <div id="menuToggle">
               <input type="checkbox" id="menu_toggler" />
