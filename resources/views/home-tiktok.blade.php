@@ -147,7 +147,10 @@
               </a>
             </div>
           </div>
-          <nav id="menu__toggle__wrapper">
+          <a href="javascript:;" class="pure-menu-link darkmode-wrapper">
+            <span class="ph ph-moon darkmode-off"></span>
+          </a>
+          {{-- <nav id="menu__toggle__wrapper">
             <div id="menuToggle">
               <input type="checkbox" id="menu_toggler" />
               <label for="menu_toggler"></label>
@@ -155,7 +158,7 @@
               <span class="bar"></span>
               <span class="bar"></span>
             </div>
-          </nav>
+          </nav> --}}
         </div>
         <span class="standforukraine">
           <i></i>
