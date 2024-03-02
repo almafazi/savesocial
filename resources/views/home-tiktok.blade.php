@@ -18,7 +18,7 @@
     <meta name="google" content="notranslate" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="{{ asset('css/main-modified.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main-modified.css') }}?v=0">
     <link rel="preconnect" href="//www.google-analytics.com">
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     <link rel="preconnect" href="//pagead2.googlesyndication.com" crossorigin>
