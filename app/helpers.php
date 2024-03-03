@@ -524,3 +524,21 @@ if (! function_exists('demo_mode')) {
         return $return_string;
     }
 }
+
+if (! function_exists('shortNumber')) {
+    /**
+     * Helper to grab the application name.
+     *
+     * @return mixed
+     */
+    function shortNumber($num) 
+    {
+        $units = ['', 'K', 'M', 'B', 'T'];
+        for ($i = 0; $num >= 1000; $i++) {
+            $num /= 1000;
+        }
+        return round($num, 1) . $units[$i];
+    }
+}
+
+

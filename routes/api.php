@@ -20,6 +20,8 @@ Route::get('posts/{shortcode}', [InstagramController::class, 'post'])->middlewar
 Route::post('fetch', [InstagramController::class, 'fetch'])->name('instagram.fetch')->middleware('throttle:4,0.2');
 Route::post('tiktok-fetch', [TiktokController::class, 'fetch'])->name('tiktok.fetch')->middleware('throttle:4,0.2');
 
+Route::post('check', [TiktokController::class, 'check'])->name('tiktok.check')->middleware('throttle:4,0.2');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

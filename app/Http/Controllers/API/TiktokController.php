@@ -113,4 +113,50 @@ class TiktokController extends Controller
         echo readfile($url);
 
     }
+
+    public function check(Request $request) {
+        $url = $request->url;
+        
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->acceptJson()->post('http://192.53.116.208:9009/api/json',[
+            'url' => $url
+        ]);
+
+        $posts = $response->collect();
+
+        if($posts->count() == 0) {
+            return response()->json([]);
+        };
+
+        $posts = $posts->toArray();
+
+
+        if($posts['status'] != 'picker' && $posts['status'] != 'error') {
+
+            $posts['video_data']["nwm_video_url"] = $this->generateDownloadLink(Crypt::encryptString($posts['metadata']['play_addr'][0]), $posts['metadata']['author']);
+            $posts['video_data']["wm_video_url"] = $this->generateDownloadLink(Crypt::encryptString($posts['metadata']['download_addr'][0]), $posts['metadata']['author']);
+            
+            $posts['audio_data']["music"] = $this->generateMp3DownloadLink(Crypt::encryptString($posts['metadata']['music']['uri']), $posts['metadata']['author']);
+
+            unset($posts["metadata"]["download_addr"]);
+            unset($posts["metadata"]["play_addr"]);
+            unset($posts["metadata"]['music']);
+
+            return response()->json([
+                'html' => view('snaptik.response.response', compact('posts'))->render()
+            ]);
+
+        } else if($posts['status'] == 'picker') {
+            $posts['picker'] = collect($posts['picker'])->map(function($item) {
+                $item['download_url'] = Crypt::encryptString($item['url']);
+                return $item;
+            })->toArray();
+
+            return response()->json([
+                'html' => view('snaptik.response.response-picker', compact('posts'))->render()
+            ]);
+        }
+
+    }
 }
