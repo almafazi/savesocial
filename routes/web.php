@@ -31,7 +31,7 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 */
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
     Route::get('/', function() {
-        return view('home-tiktok');
+        return view('snaptik/home');
     })->name('index');
     Route::get('/tiktok', function() {
         return view('home-tiktok');
