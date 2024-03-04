@@ -31,8 +31,47 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 */
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
     Route::get('/', function() {
-        return view('snaptik/home');
+        return view('snaptik/home', [
+            'menu' => null
+        ]);
     })->name('index');
+
+    Route::get('/download-tiktok-mp3', function() {
+        return view('snaptik/home', [
+            'menu' => 'download-tiktok-mp3'
+        ]);
+    })->name('index');
+
+    Route::get('/download-tiktok-slideshow', function() {
+        return view('snaptik/home', [
+            'menu' => 'download-tiktok-slideshow'
+        ]);
+    })->name('index');
+
+    Route::get('/download-tiktok-story', function() {
+        return view('snaptik/home', [
+            'menu' => 'download-tiktok-story'
+        ]);
+    })->name('index');
+
+    Route::get('/about-us', function() {
+        return view('snaptik.page.about-us');
+    })->name('about-us');
+
+    Route::get('/contact', function() {
+        return view('snaptik.page.contact');
+    })->name('contact');
+
+    Route::get('/tos', function() {
+        return view('snaptik.page.tos');
+    })->name('tos');
+
+    Route::get('/privacy-policy', function() {
+        return view('snaptik.page.privacy-policy');
+    })->name('privacy-policy');
+
+    /* --------------------- */
+
     Route::get('/tiktok', function() {
         return view('home-tiktok');
     })->name('index.tiktok');

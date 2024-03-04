@@ -116,6 +116,7 @@ class TiktokController extends Controller
 
     public function check(Request $request) {
         $url = $request->url;
+        $menu = $request->menu;
         
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
@@ -144,7 +145,7 @@ class TiktokController extends Controller
             unset($posts["metadata"]['music']);
 
             return response()->json([
-                'html' => view('snaptik.response.response', compact('posts'))->render()
+                'html' => view('snaptik.response.response', compact('posts', 'menu'))->render()
             ]);
 
         } else if($posts['status'] == 'picker') {
@@ -154,7 +155,7 @@ class TiktokController extends Controller
             })->toArray();
 
             return response()->json([
-                'html' => view('snaptik.response.response-picker', compact('posts'))->render()
+                'html' => view('snaptik.response.response-picker', compact('posts', 'menu'))->render()
             ]);
         }
 
