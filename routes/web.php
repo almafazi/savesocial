@@ -70,6 +70,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
         return view('snaptik.page.privacy-policy');
     })->name('privacy-policy');
 
+    Route::get('/{lang}', function($lang) {
+        return view('snaptik/localization/'.$lang.'/home', [
+            'menu' => null
+        ]);
+    })->name('index');
+
     /* --------------------- */
 
     Route::get('/tiktok', function() {
