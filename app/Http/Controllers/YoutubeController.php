@@ -44,7 +44,6 @@ class YoutubeController extends Controller
             if ($video->getError() !== null) {
                 echo "Error downloading video: {$video->getError()}.";
             } else {
-                dd($video);
                 $url = $video->getFile()->getPathname();
 
                 $getID3 = new getID3;
@@ -79,11 +78,10 @@ class YoutubeController extends Controller
                         "mess" => "",
                         "c_status" => "CONVERTED",
                         "vid" => $id,
-                        "title" => "ANJI - DIA (Official Music Video)",
+                        "title" => $video['title'],
                         "ftype" => "mp3",
                         "fquality" => "128",
-                        "dlink" =>
-                            "https://dl225.filemate9.shop/?file=M3R4SUNiN3JsOHJ6WWQ2a3NQS1Y5ZGlxVlZIOCtyZ0Z0djhUakZzSEtJb0hpWXNwM3VlcElzVUVBN0ljeElucEo5ZFE4REdXZk1EWWRnbUF1cDBaVW5LVi80dDQ2eG5XL0pzMFRNdDBFMFRlbHZidzAyTlEya0tuV05MSExLaFNPMDh2OG5aQ25TdURuN2ZUdkJxbG1sbnJvbFdUWlRZUHBqSUdPS2lCcHM4UmdqMmRQNkd3bFlNTXR5UEN0c29iaktQTDdFZmwxZTg2dW9zPQ%3D%3D",
+                        "dlink" => asset('mp3/'.$video->getFile()->getFilename())
                     ]);
 
                 }else{
