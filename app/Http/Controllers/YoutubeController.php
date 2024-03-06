@@ -13,14 +13,14 @@ use Illuminate\Support\Str;
 
 class YoutubeController extends Controller
 {
-    public function generateMp3DownloadLink($url, $name)
+    public function generateMp3DownloadLink($url)
     {
         $token = Str::random(16); // Generate a random token
         // Save the token and other details in the database for validation later
         // You may want to associate it with the user, URL, and name
         // ...
 
-        $link = route('frontend.index.yt-download-mp3', ['url' => $url, 'name' => $name, 'token' => $token]);
+        $link = route('frontend.index.yt-download-mp3', ['url' => $url, 'token' => $token]);
 
         return $link;
     }
@@ -35,8 +35,8 @@ class YoutubeController extends Controller
                 ->audioFormat('mp3')
                 ->audioQuality('0')
                 ->output('%(title)s.%(ext)s')
-                ->writeThumbnail(true)
-                ->writeAllThumbnails(true)
+                // ->writeThumbnail(true)
+                // ->writeAllThumbnails(true)
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
@@ -52,7 +52,7 @@ class YoutubeController extends Controller
                 $tagwriter->filename = $url;
                 $tagwriter->tagformats = array('id3v2.4');
                 $tagwriter->overwrite_tags    = true;
-                $tagwriter->remove_other_tags = true;
+                // $tagwriter->remove_other_tags = true;
                 $tagwriter->tag_encoding      = 'UTF-8';
 
                 $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
@@ -81,7 +81,7 @@ class YoutubeController extends Controller
                         "title" => $video->getTitle(),
                         "ftype" => "mp3",
                         "fquality" => "128",
-                        "dlink" => asset('mp3/'.$video->getFile()->getFilename())
+                        "dlink" => $this->generateMp3DownloadLink(Crypt::encryptString($video->getFile()->getFilename()))
                     ]);
 
                 }else{
@@ -92,59 +92,8 @@ class YoutubeController extends Controller
 
     }
 
-    public function download_mp3($id, $name) {
-        $yt = new YoutubeDl();
-        $collection = $yt->download(
-            Options::create()
-                ->downloadPath(public_path('mp3'))
-                ->extractAudio(true)
-                ->audioFormat('mp3')
-                ->audioQuality('0')
-                ->output('%(title)s.%(ext)s')
-                ->writeThumbnail(true)
-                ->writeAllThumbnails(true)
-                ->url('https://www.youtube.com/watch?v='.$id)
-        );
-
-        foreach ($collection->getVideos() as $video) {
-            if ($video->getError() !== null) {
-                echo "Error downloading video: {$video->getError()}.";
-            } else {
-                $url = $video->getFile()->getPathname();
-
-                $getID3 = new getID3;
-
-                $tagwriter = new getid3_writetags;
-                $tagwriter->filename = $url;
-                $tagwriter->tagformats = array('id3v2.4');
-                $tagwriter->overwrite_tags    = true;
-                $tagwriter->remove_other_tags = true;
-                $tagwriter->tag_encoding      = 'UTF-8';
-
-                $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
-
-                $TagData = array(
-                    'attached_picture' => array(
-                        array (
-                            'data'=> $pictureFile,
-                            'picturetypeid'=> 3,
-                            'mime'=> 'image/jpeg',
-                            'description' => $video->getFile()->getFilename()
-                        )
-                    )
-                );
-
-                $tagwriter->tag_data = $TagData;
-
-                // write tags
-                if ($tagwriter->WriteTags()){
-                    return response()->download($url);
-                }else{
-                    throw new \Exception(implode(' : ', $tagwriter->errors));
-                }
-            }
-        }
-
+    public function download_mp3($url) {
+        return response()->download(public_path('mp3/'.Crypt::decryptString($url)));
     }
     
     public function analyze(Request $request) {
