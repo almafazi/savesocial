@@ -35,9 +35,15 @@ class YoutubeController extends Controller
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
-        dd($collection);
+        foreach ($collection->getVideos() as $video) {
+            if ($video->getError() !== null) {
+                echo "Error downloading video: {$video->getError()}.";
+            } else {
+                dd($video->getFile()); // audio file
+            }
+        }
 
-        // $decrypted = Crypt::decryptString($url);
+        // // $decrypted = Crypt::decryptString($url);
         // $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.mp3';
         // $url = $decrypted;
         // $headers = get_headers($url, 1);
