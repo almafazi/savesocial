@@ -31,7 +31,7 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 * --------------------------------------------------------------------
 */
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
-    Route::get('/ytdl', [YoutubeController::class, 'index'])->name('index.ytdl');
+    //Route::get('/ytdl', [YoutubeController::class, 'index'])->name('index.ytdl');
 
     
     Route::get('/', function() {
