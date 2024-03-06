@@ -31,6 +31,9 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 * --------------------------------------------------------------------
 */
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
+    Route::get('/ytdl', [YoutubeController::class, 'index'])->name('index.ytdl');
+
+    
     Route::get('/', function() {
         return view('snaptik/home', [
             'menu' => null
@@ -85,8 +88,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     Route::get('/convert', function() {
         return view('home-convert');
     })->name('index.convert');
-
-    Route::get('/ytdl', [YoutubeController::class, 'index'])->name('index.ytdl');
 
     Route::get('/tiktok-download-mp3/{url?}/{name?}', [TiktokController::class, 'download_mp3'])->name('index.tiktok-download-mp3');
     Route::get('/tiktok-download-image/{url?}/{name?}', [TiktokController::class, 'download_image'])->name('index.tiktok-download-image');
