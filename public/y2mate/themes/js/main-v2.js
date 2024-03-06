@@ -597,11 +597,10 @@ function sendConvertRequest(kinfo, fallbackFunc)
     });
 };
 var convertFile = function (kinfo) {
-    window.open(kinfo);
 
-    // if(tried_send_convert_rq_time++<5){
-    //     return sendConvertRequest(kinfo, convertFile);
-    // }
+    if(tried_send_convert_rq_time++<5){
+        return sendConvertRequest(kinfo, convertFile);
+    }
     p_b=false;
     tried_send_convert_rq_time = 0;
     return false;

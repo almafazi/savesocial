@@ -235,7 +235,7 @@ y2mate.com
     var k_busy = false;
     var p_b = false;
     var k_analyze_url = "{{ url('/') }}/mates/analyzeV2/ajax";
-    var k_convert_url = "https:\/\/www.y2mate.com\/mates\/convertV2\/index";
+    var k_convert_url = "{{ url('/') }}/mates/convertV2/index";
     var k_url_pool = "https:\/\/www.y2mate.com\/mates\/convertV2\/pool";
     var k_tmp_url = "\/_hl_\/";
     var wLocation = "\/id\/";

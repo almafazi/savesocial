@@ -40,6 +40,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     })->name('index.y2mate');
 
     Route::post('mates/analyzeV2/ajax', [YoutubeController::class, 'analyze'])->name('index.y2mate.analyze');
+    Route::post('mates/convertV2/index', [YoutubeController::class, 'convert'])->name('index.y2mate.convert');
+
     Route::get('/yt-download-mp3/{url?}/{name?}', [YoutubeController::class, 'download_mp3'])->name('index.yt-download-mp3');
 
     

@@ -25,6 +25,75 @@ class YoutubeController extends Controller
         return $link;
     }
 
+    public function convert(Request $request) {
+        $id = $request->vid;
+        $yt = new YoutubeDl();
+        $collection = $yt->download(
+            Options::create()
+                ->downloadPath(public_path('mp3'))
+                ->extractAudio(true)
+                ->audioFormat('mp3')
+                ->audioQuality('0')
+                ->output('%(title)s.%(ext)s')
+                ->writeThumbnail(true)
+                ->writeAllThumbnails(true)
+                ->url('https://www.youtube.com/watch?v='.$id)
+        );
+
+        foreach ($collection->getVideos() as $video) {
+            if ($video->getError() !== null) {
+                echo "Error downloading video: {$video->getError()}.";
+            } else {
+                dd($video);
+                $url = $video->getFile()->getPathname();
+
+                $getID3 = new getID3;
+
+                $tagwriter = new getid3_writetags;
+                $tagwriter->filename = $url;
+                $tagwriter->tagformats = array('id3v2.4');
+                $tagwriter->overwrite_tags    = true;
+                $tagwriter->remove_other_tags = true;
+                $tagwriter->tag_encoding      = 'UTF-8';
+
+                $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
+
+                $TagData = array(
+                    'attached_picture' => array(
+                        array (
+                            'data'=> $pictureFile,
+                            'picturetypeid'=> 3,
+                            'mime'=> 'image/jpeg',
+                            'description' => $video->getFile()->getFilename()
+                        )
+                    )
+                );
+
+                $tagwriter->tag_data = $TagData;
+
+                // write tags
+                if ($tagwriter->WriteTags()){
+
+                    return response()->json([
+                        "status" => "ok",
+                        "mess" => "",
+                        "c_status" => "CONVERTED",
+                        "vid" => $id,
+                        "title" => "ANJI - DIA (Official Music Video)",
+                        "ftype" => "mp3",
+                        "fquality" => "128",
+                        "dlink" =>
+                            "https://dl225.filemate9.shop/?file=M3R4SUNiN3JsOHJ6WWQ2a3NQS1Y5ZGlxVlZIOCtyZ0Z0djhUakZzSEtJb0hpWXNwM3VlcElzVUVBN0ljeElucEo5ZFE4REdXZk1EWWRnbUF1cDBaVW5LVi80dDQ2eG5XL0pzMFRNdDBFMFRlbHZidzAyTlEya0tuV05MSExLaFNPMDh2OG5aQ25TdURuN2ZUdkJxbG1sbnJvbFdUWlRZUHBqSUdPS2lCcHM4UmdqMmRQNkd3bFlNTXR5UEN0c29iaktQTDdFZmwxZTg2dW9zPQ%3D%3D",
+                    ]);
+
+                }else{
+                    throw new \Exception(implode(' : ', $tagwriter->errors));
+                }
+            }
+        }
+
+    }
+
     public function download_mp3($id, $name) {
         $yt = new YoutubeDl();
         $collection = $yt->download(
@@ -43,16 +112,7 @@ class YoutubeController extends Controller
             if ($video->getError() !== null) {
                 echo "Error downloading video: {$video->getError()}.";
             } else {
-                // dd($video->getFile());
                 $url = $video->getFile()->getPathname();
-                
-
-                // header('Content-Length: '.$headers["Content-Length"]);
-                // header("Content-Transfer-Encoding: Binary");
-                // header('Content-Type: '.$headers["Content-Type"]); 
-                // header("Content-disposition: attachment; filename=\"$filename\""); 
-            
-                // echo readfile($url);
 
                 $getID3 = new getID3;
 
@@ -86,17 +146,6 @@ class YoutubeController extends Controller
                 }
             }
         }
-
-        // // $decrypted = Crypt::decryptString($url);
-        // $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.mp3';
-        // $url = $decrypted;
-        // $headers = get_headers($url, 1);
-        // header('Content-Length: '.$headers["Content-Length"]);
-        // header("Content-Transfer-Encoding: Binary");
-        // header('Content-Type: '.$headers["Content-Type"]); 
-        // header("Content-disposition: attachment; filename=\"$filename\""); 
-       
-        // echo readfile($url);
 
     }
     
