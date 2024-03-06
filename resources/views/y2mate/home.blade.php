@@ -269,7 +269,7 @@ y2mate.com
 </div>
 </footer>
 </div>
-<script type="text/javascript" charset="utf-8" src="{{ asset('y2mate/themes/js/main-v2.js') }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ asset('y2mate/themes/js/main-v2.js') }}?v=0"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSRPB96YVC"></script>
 <script>
             window.dataLayer = window.dataLayer || [];
