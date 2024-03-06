@@ -30,10 +30,12 @@ class YoutubeController extends Controller
                 ->downloadPath(public_path('mp3'))
                 ->extractAudio(true)
                 ->audioFormat('mp3')
-                ->audioQuality('0') // best
+                ->audioQuality('0')
                 ->output('%(title)s.%(ext)s')
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
+
+        dd($collection);
 
         // $decrypted = Crypt::decryptString($url);
         // $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.mp3';
