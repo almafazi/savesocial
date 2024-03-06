@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\TiktokController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\YoutubeController;
 use App\Http\Middleware\RateLimitDownload;
 use Illuminate\Support\Facades\Route;
 
@@ -84,6 +85,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     Route::get('/convert', function() {
         return view('home-convert');
     })->name('index.convert');
+
+    Route::get('/ytdl', [YoutubeController::class, 'index'])->name('index.ytdl');
 
     Route::get('/tiktok-download-mp3/{url?}/{name?}', [TiktokController::class, 'download_mp3'])->name('index.tiktok-download-mp3');
     Route::get('/tiktok-download-image/{url?}/{name?}', [TiktokController::class, 'download_image'])->name('index.tiktok-download-image');
