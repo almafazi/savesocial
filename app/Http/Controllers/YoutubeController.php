@@ -46,7 +46,6 @@ class YoutubeController extends Controller
                 // dd($video->getFile());
                 $url = $video->getFile()->getPathname();
                 
-                return response()->download($url);
 
                 // header('Content-Length: '.$headers["Content-Length"]);
                 // header("Content-Transfer-Encoding: Binary");
@@ -55,40 +54,36 @@ class YoutubeController extends Controller
             
                 // echo readfile($url);
 
-                // // Initialize getID3 engine
-                // $getID3 = new getID3;
+                $getID3 = new getID3;
 
-                // // Initialize getID3 tag-writing module
-                // $tagwriter = new getid3_writetags;
-                // $tagwriter->filename = 'woys.mp3';
-                // $tagwriter->tagformats = array('id3v2.4');
-                // $tagwriter->overwrite_tags    = true;
-                // $tagwriter->remove_other_tags = true;
-                // $tagwriter->tag_encoding      = 'UTF-8';
+                $tagwriter = new getid3_writetags;
+                $tagwriter->filename = $url;
+                $tagwriter->tagformats = array('id3v2.4');
+                $tagwriter->overwrite_tags    = true;
+                $tagwriter->remove_other_tags = true;
+                $tagwriter->tag_encoding      = 'UTF-8';
 
+                $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
 
-                // $ytId = explode('/', 'converted/Youtube/mp3/WfVU18gRLU0/192.mp3');
-                // $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$ytId[3]."/default.jpg");
+                $TagData = array(
+                    'attached_picture' => array(
+                        array (
+                            'data'=> $pictureFile,
+                            'picturetypeid'=> 3,
+                            'mime'=> 'image/jpeg',
+                            'description' => $video->getFile()->getFilename()
+                        )
+                    )
+                );
 
-                // $TagData = array(
-                //     'attached_picture' => array(
-                //         array (
-                //             'data'=> $pictureFile,
-                //             'picturetypeid'=> 3,
-                //             'mime'=> 'image/jpeg',
-                //             'description' => 'Nama saya'
-                //         )
-                //     )
-                // );
+                $tagwriter->tag_data = $TagData;
 
-                // $tagwriter->tag_data = $TagData;
-
-                // // write tags
-                // if ($tagwriter->WriteTags()){
-                //     return true;
-                // }else{
-                //     throw new \Exception(implode(' : ', $tagwriter->errors));
-                // }
+                // write tags
+                if ($tagwriter->WriteTags()){
+                    return response()->streamDownload($url);
+                }else{
+                    throw new \Exception(implode(' : ', $tagwriter->errors));
+                }
             }
         }
 
