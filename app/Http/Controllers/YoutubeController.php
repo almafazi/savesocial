@@ -78,7 +78,7 @@ class YoutubeController extends Controller
                         "mess" => "",
                         "c_status" => "CONVERTED",
                         "vid" => $id,
-                        "title" => $video['title'],
+                        "title" => $video->getTitle(),
                         "ftype" => "mp3",
                         "fquality" => "128",
                         "dlink" => asset('mp3/'.$video->getFile()->getFilename())
