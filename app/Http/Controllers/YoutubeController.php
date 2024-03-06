@@ -80,7 +80,7 @@ class YoutubeController extends Controller
 
                 // write tags
                 if ($tagwriter->WriteTags()){
-                    return response()->streamDownload($url);
+                    return response()->download($url);
                 }else{
                     throw new \Exception(implode(' : ', $tagwriter->errors));
                 }
