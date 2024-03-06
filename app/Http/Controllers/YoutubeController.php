@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use getID3;
+use getid3_writetags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
@@ -39,7 +41,42 @@ class YoutubeController extends Controller
             if ($video->getError() !== null) {
                 echo "Error downloading video: {$video->getError()}.";
             } else {
-                dd($video->getFile()); // audio file
+                dd($video->getFile()->getPathname()); // audio file
+
+                // Initialize getID3 engine
+                $getID3 = new getID3;
+
+                // Initialize getID3 tag-writing module
+                $tagwriter = new getid3_writetags;
+                $tagwriter->filename = 'woys.mp3';
+                $tagwriter->tagformats = array('id3v2.4');
+                $tagwriter->overwrite_tags    = true;
+                $tagwriter->remove_other_tags = true;
+                $tagwriter->tag_encoding      = 'UTF-8';
+
+
+                $ytId = explode('/', 'converted/Youtube/mp3/WfVU18gRLU0/192.mp3');
+                $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$ytId[3]."/default.jpg");
+
+                $TagData = array(
+                    'attached_picture' => array(
+                        array (
+                            'data'=> $pictureFile,
+                            'picturetypeid'=> 3,
+                            'mime'=> 'image/jpeg',
+                            'description' => 'Nama saya'
+                        )
+                    )
+                );
+
+                $tagwriter->tag_data = $TagData;
+
+                // write tags
+                if ($tagwriter->WriteTags()){
+                    return true;
+                }else{
+                    throw new \Exception(implode(' : ', $tagwriter->errors));
+                }
             }
         }
 
