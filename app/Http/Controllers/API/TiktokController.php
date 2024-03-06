@@ -126,6 +126,12 @@ class TiktokController extends Controller
 
         $posts = $response->collect();
 
+        if($posts['status'] == 'error') {
+            return response()->json([
+                "error" => "TikTok URL is not valid!"
+            ]);
+        };
+
         if($posts->count() == 0) {
             return response()->json([]);
         };
@@ -153,6 +159,11 @@ class TiktokController extends Controller
                 $item['download_url'] = Crypt::encryptString($item['url']);
                 return $item;
             })->toArray();
+
+            $posts['audio_data']["music"] = $this->generateMp3DownloadLink(Crypt::encryptString($posts['metadata']['music']['uri']), $posts['metadata']['author']);
+            $posts['video_data']["nwm_video_url"] = $this->generateDownloadLink(Crypt::encryptString($posts['metadata']['play_addr'][0]), $posts['metadata']['author']);
+            unset($posts["metadata"]["play_addr"]);
+            unset($posts["metadata"]['music']);
 
             return response()->json([
                 'html' => view('snaptik.response.response-picker', compact('posts', 'menu'))->render()
