@@ -43,6 +43,7 @@ class YoutubeController extends Controller
             if ($video->getError() !== null) {
                 echo "Error downloading video: {$video->getError()}.";
             } else {
+                dd($video->getFile());
                 $filename= trim('test').' '.date('d-m-Y Hi').' '.uniqid().'.mp3';
                 $url = $video->getFile()->getPathname();
                 $headers = get_headers($url, 1);
