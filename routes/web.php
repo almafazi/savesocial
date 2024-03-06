@@ -33,7 +33,17 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
     //Route::get('/ytdl', [YoutubeController::class, 'index'])->name('index.ytdl');
 
+    Route::get('y2mate', function() {
+        return view('y2mate/home', [
+            'menu' => null
+        ]);
+    })->name('index.y2mate');
+
+    Route::post('mates/analyzeV2/ajax', [YoutubeController::class, 'analyze'])->name('index.y2mate.analyze');
+
     
+    
+    /* ---------- */
     Route::get('/', function() {
         return view('snaptik/home', [
             'menu' => null
