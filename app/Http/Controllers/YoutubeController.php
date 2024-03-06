@@ -14,7 +14,7 @@ class YoutubeController extends Controller
 
         $collection = $yt->download(
             Options::create()
-                ->downloadPath('/path/to/downloads')
+                ->downloadPath(public_path('download'))
                 ->url('https://www.youtube.com/watch?v=oDAw7vW7H0c')
         );
 
