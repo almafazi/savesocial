@@ -43,16 +43,17 @@ class YoutubeController extends Controller
             if ($video->getError() !== null) {
                 echo "Error downloading video: {$video->getError()}.";
             } else {
-                dd($video->getFile());
-                $filename= trim('test').' '.date('d-m-Y Hi').' '.uniqid().'.mp3';
+                // dd($video->getFile());
                 $url = $video->getFile()->getPathname();
-                $headers = get_headers($url, 1);
-                header('Content-Length: '.$headers["Content-Length"]);
-                header("Content-Transfer-Encoding: Binary");
-                header('Content-Type: '.$headers["Content-Type"]); 
-                header("Content-disposition: attachment; filename=\"$filename\""); 
+                
+                return response()->download($url);
+
+                // header('Content-Length: '.$headers["Content-Length"]);
+                // header("Content-Transfer-Encoding: Binary");
+                // header('Content-Type: '.$headers["Content-Type"]); 
+                // header("Content-disposition: attachment; filename=\"$filename\""); 
             
-                echo readfile($url);
+                // echo readfile($url);
 
                 // // Initialize getID3 engine
                 // $getID3 = new getID3;
