@@ -34,6 +34,8 @@ class YoutubeController extends Controller
                 ->audioFormat('mp3')
                 ->audioQuality('0')
                 ->output('%(title)s.%(ext)s')
+                ->writeThumbnail(true)
+                ->writeAllThumbnails(true)
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
