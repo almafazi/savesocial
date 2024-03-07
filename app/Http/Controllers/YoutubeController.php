@@ -48,6 +48,8 @@ class YoutubeController extends Controller
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
+        dd($collection);
+
         foreach ($collection->getVideos() as $video) {
             if ($video->getError() !== null) {
                 $notfound = true;
