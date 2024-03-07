@@ -37,27 +37,27 @@ class YoutubeController extends Controller
         //         }
         //     }
         // }
-        $yt = new YoutubeDl();
-       // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
-        $collection = $yt->download(
-            Options::create()
-                ->maxFileSize('150m')
-                ->skipDownload(true)
-                ->cleanupMetadata(false)
-                ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata/'))
-                ->url('https://www.youtube.com/watch?v='.$id)
-        );
+    //     $yt = new YoutubeDl();
+    //    // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
+    //     $collection = $yt->download(
+    //         Options::create()
+    //             ->maxFileSize('150m')
+    //             ->skipDownload(true)
+    //             ->cleanupMetadata(false)
+    //             ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata/'))
+    //             ->url('https://www.youtube.com/watch?v='.$id)
+    //     );
 
-        foreach ($collection->getVideos() as $video) {
-            if ($video->getError() !== null) {
-                $notfound = true;
-                return view('y2mate.download', compact('video', 'notfound'));
-            } else {
-            }
-        }
+    //     foreach ($collection->getVideos() as $video) {
+    //         if ($video->getError() !== null) {
+    //             $notfound = true;
+    //             return view('y2mate.download', compact('video', 'notfound'));
+    //         } else {
+    //         }
+    //     }
 
-        $notfound = false;
-        return view('y2mate.download', compact('video', 'notfound'));
+    //     $notfound = false;
+        return view('y2mate.download', compact('id'));
     }
 
     public function convert_api(Request $request) {

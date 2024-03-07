@@ -25,8 +25,8 @@
 <a id="downloadButton" class="dmtrigger" href="javascript:;" data-ok="1">
 <div id="container" class="progress-button">
 <div id="percentageText">
-<span id="dt">{{ $notfound ? 'Not Found!' : 'Download MP3' }}</span><div class="buttonTitle">
-    <span>{{ $video->title ?? $video->getTitle() }}</span>
+<span id="dt">{{ 'Download MP3' }}</span><div class="buttonTitle">
+    {{-- <span>{{ $video->title ?? $video->getTitle() }}</span> --}}
     {{-- <span class="filesize">{{  humanFilesize($video->filesize ?? $video->getFilesize()) }}</span> --}}
 </div>
 </div>
@@ -44,7 +44,7 @@ $(document).on('click', 'a.dmtrigger', function(e) {
 	var ok = $(this).attr("data-ok");
 	if(ok == '1'){
 		$('#downloadButton').attr("data-ok", "0");
-		mp3Conversion('{{ $video->id ?? $video->getId() }}');	
+		mp3Conversion('{{ $id }}');	
 		$('#downloadButton').attr("data-ok", "1");		
 	}
 });
@@ -59,7 +59,7 @@ function mp3Conversion(id, cfToken = null){
 		type: 'POST',
 		url: '{{ route("index.y2mate.convert") }}',
 		data: {
-            'id': '{{ $video->id ?? $video->getId()}}',
+            'id': '{{ $id )}}',
             's': window.tS,
             'h': window.tH
         },
