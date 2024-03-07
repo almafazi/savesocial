@@ -27,17 +27,16 @@ class YoutubeController extends Controller
     }
 
     public function download($id) {
-        if (Storage::disk('public')->exists('mp3/'.$id.'/metadata')) {
-            foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/metadata') as $file) {
-                if (pathinfo($file, PATHINFO_EXTENSION) == 'json') {
-                    $video = json_decode(Storage::disk('public')->get($file));
-                    dd($video);
-                    $notfound = false;
-                    return view('y2mate.download', compact('video', 'notfound'));
-                    break;
-                }
-            }
-        }
+        // if (Storage::disk('public')->exists('mp3/'.$id.'/metadata')) {
+        //     foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/metadata') as $file) {
+        //         if (pathinfo($file, PATHINFO_EXTENSION) == 'json') {
+        //             $video = json_decode(Storage::disk('public')->get($file));
+        //             $notfound = false;
+        //             return view('y2mate.download', compact('video', 'notfound'));
+        //             break;
+        //         }
+        //     }
+        // }
         $yt = new YoutubeDl();
        // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
         $collection = $yt->download(
