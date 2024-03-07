@@ -32,7 +32,7 @@ class YoutubeController extends Controller
         $collection = $yt->download(
             Options::create()
                 ->skipDownload(true)
-                ->downloadPath(storage_path('app/public/mp3/'.$id))
+                ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata'))
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
@@ -48,9 +48,8 @@ class YoutubeController extends Controller
 
     public function convert_api(Request $request) {
         $id = $request->id;
-        if (Storage::disk('public')->exists('mp3/'.$id.'/*.mp3')) {
-            dd('dd');
-            foreach (Storage::disk('public')->allFiles('mp3/'.$id) as $file) {
+        if (Storage::disk('public')->exists('mp3/'.$id.'/file')) {
+            foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/file') as $file) {
                 if (pathinfo($file, PATHINFO_EXTENSION) == 'mp3') {
                     $pathinfo = pathinfo($file);
             
@@ -75,7 +74,7 @@ class YoutubeController extends Controller
             $yt->setBinPath('/usr/local/bin/yt-dlp');
             $collection = $yt->download(
                 Options::create()
-                    ->downloadPath(storage_path('app/public/mp3/'.$id))
+                    ->downloadPath(storage_path('app/public/mp3/'.$id.'/file'))
                     ->extractAudio(true)
                     ->audioFormat('mp3')
                     // ->preferFFmpeg(true)
@@ -210,7 +209,7 @@ class YoutubeController extends Controller
     }
 
     public function download_mp3($id, $filename) {
-        return response()->download(storage_path('app/public/mp3/'.Crypt::decryptString($id)).'/'.Crypt::decryptString($filename));
+        return response()->download(storage_path('app/public/mp3/'.Crypt::decryptString($id)).'/file/'.Crypt::decryptString($filename));
     }
     
     public function analyze(Request $request) {
