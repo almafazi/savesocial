@@ -7,6 +7,7 @@ use getid3_writetags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use YoutubeDl\Options;
 use YoutubeDl\YoutubeDl;
 use Illuminate\Support\Str;
@@ -23,6 +24,96 @@ class YoutubeController extends Controller
         $link = route('frontend.index.yt-download-mp3', ['url' => $url, 'token' => $token]);
 
         return $link;
+    }
+
+    public function download($id) {
+        $yt = new YoutubeDl();
+        $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
+        $collection = $yt->download(
+            Options::create()
+                ->skipDownload(true)
+                ->downloadPath(storage_path('app/public/mp3'))
+                ->url('https://www.youtube.com/watch?v='.$id)
+        );
+
+        foreach ($collection->getVideos() as $video) {
+            if ($video->getError() !== null) {
+                echo "Error downloading video: {$video->getError()}.";
+            } else {
+            }
+        }
+
+        return view('y2mate.download', compact('video'));
+    }
+
+    public function convert_api(Request $request) {
+        $id = $request->id;
+        $yt = new YoutubeDl();
+        $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
+        $collection = $yt->download(
+            Options::create()
+                ->downloadPath(storage_path('app/public/mp3'))
+                ->extractAudio(true)
+                ->audioFormat('mp3')
+                ->audioQuality('0')
+                ->output('%(title)s.%(ext)s')
+                ->url('https://www.youtube.com/watch?v='.$id)
+        );
+
+        foreach ($collection->getVideos() as $video) {
+            if ($video->getError() !== null) {
+                echo "Error downloading video: {$video->getError()}.";
+            } else {
+                dd($video);
+                $url = $video->getFile()->getPathname();
+
+                $getID3 = new getID3;
+
+                $tagwriter = new getid3_writetags;
+                $tagwriter->filename = $url;
+                $tagwriter->tagformats = array('id3v2.4');
+                $tagwriter->overwrite_tags    = true;
+                // $tagwriter->remove_other_tags = true;
+                $tagwriter->tag_encoding      = 'UTF-8';
+
+                $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
+
+                $TagData = array(
+                    'attached_picture' => array(
+                        array (
+                            'data'=> $pictureFile,
+                            'picturetypeid'=> 3,
+                            'mime'=> 'image/jpeg',
+                            'description' => $video->getFile()->getFilename()
+                        )
+                    )
+                );
+
+                $tagwriter->tag_data = $TagData;
+
+                // write tags
+                if ($tagwriter->WriteTags()){
+
+                    return response()->json(
+                        [
+                            "title" =>
+                                $video->getTitle(),
+                            "link" =>
+                                $this->generateMp3DownloadLink(Crypt::encryptString($video->getFile()->getFilename())),
+                            "duration" => 6840.476794741985,
+                            "msg" => "success",
+                            "status" => "ok",
+                            "age" => "0",
+                            "progress" => 0,
+                            "filesize" => 109731214,
+                        ]);
+
+                }else{
+                    throw new \Exception(implode(' : ', $tagwriter->errors));
+                }
+            }
+        }
+
     }
 
     public function convert(Request $request) {
