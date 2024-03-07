@@ -52,8 +52,21 @@ class YoutubeController extends Controller
             // dd('exists');
             foreach (Storage::disk('public')->allFiles('mp3/'.$id) as $file) {
                 if (pathinfo($file, PATHINFO_EXTENSION) == 'mp3') {
-                    dd(pathinfo($file));
+                    $pathinfo = pathinfo($file);
             
+                    return response()->json(
+                    [
+                            "title" =>
+                                $pathinfo['basename'],
+                            "link" =>
+                                $this->generateMp3DownloadLink(Crypt::encryptString($id), Crypt::encryptString($pathinfo['basename'])),
+                            "duration" => '-',
+                            "msg" => "success",
+                            "status" => "ok",
+                            "age" => "0",
+                            "progress" => 0,
+                            "filesize" => '-',
+                    ]);
                     break;
                 }
             }
