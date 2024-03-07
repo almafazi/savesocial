@@ -48,6 +48,11 @@ class YoutubeController extends Controller
 
     public function convert_api(Request $request) {
         $id = $request->id;
+        if (Storage::disk('public')->exists('mp3/'.$id)) {
+            dd('exists');
+        } else {
+            dd('dd');
+        }
         $yt = new YoutubeDl();
         $yt->setBinPath('/usr/local/bin/yt-dlp');
         $collection = $yt->download(
