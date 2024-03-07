@@ -59,7 +59,7 @@ function mp3Conversion(id, cfToken = null){
 		type: 'POST',
 		url: '{{ route("index.y2mate.convert") }}',
 		data: {
-            'id': '{{ $id )}}',
+            'id': '{{ $id }}',
             's': window.tS,
             'h': window.tH
         },
