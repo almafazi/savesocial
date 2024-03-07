@@ -31,6 +31,7 @@ class YoutubeController extends Controller
             foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/metadata') as $file) {
                 if (pathinfo($file, PATHINFO_EXTENSION) == 'json') {
                     $video = json_decode(Storage::disk('public')->get($file));
+                    dd($video);
                     $notfound = false;
                     return view('y2mate.download', compact('video', 'notfound'));
                     break;
