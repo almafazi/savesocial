@@ -14,13 +14,21 @@
 	background-image: none;		
 	color: #FF0000!important;
 }
+.filesize {
+    display: block;
+    margin-top: 5px;
+    color: brown;
+}
 </style>
 </head>
 <body>
 <a id="downloadButton" class="dmtrigger" href="javascript:;" data-ok="1">
 <div id="container" class="progress-button">
 <div id="percentageText">
-<span id="dt">Download MP3</span><div class="buttonTitle">{{ $video->getTitle() }}</div>
+<span id="dt">{{ $notfound ? 'Not Found!' : 'Download MP3' }}</span><div class="buttonTitle">
+    <span>{{ $video->title ?? $video->getTitle() }}</span>
+    <span class="filesize">{{  humanFilesize($video->filesize ?? $video->getFilesize()) }}</span>
+</div>
 </div>
 </div>
 </a>
@@ -29,17 +37,18 @@
 var cfToken = null;
 var turnstileWID = null;
 var expCookie = 'm3aytj_dlexp';
-
+@if(!$notfound)
 $(document).on('click', 'a.dmtrigger', function(e) {
 	e.preventDefault();
 	$('#dt').text('Generating Links...');
 	var ok = $(this).attr("data-ok");
 	if(ok == '1'){
 		$('#downloadButton').attr("data-ok", "0");
-		mp3Conversion('{{ $video->getId() }}');	
+		mp3Conversion('{{ $video->id ?? $video->getId() }}');	
 		$('#downloadButton').attr("data-ok", "1");		
 	}
 });
+@endif
 function mp3Conversion(id, cfToken = null){
     $.ajaxSetup({
         headers: {
@@ -48,9 +57,9 @@ function mp3Conversion(id, cfToken = null){
     });
 	$.ajax({
 		type: 'POST',
-		url: '{{ route("frontend.index.y2mate.convert") }}',
+		url: '{{ route("index.y2mate.convert") }}',
 		data: {
-            'id': '{{ $video->getId()}}',
+            'id': '{{ $video->id ?? $video->getId()}}',
             's': window.tS,
             'h': window.tH
         },

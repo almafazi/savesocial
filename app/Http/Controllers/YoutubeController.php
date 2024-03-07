@@ -21,29 +21,43 @@ class YoutubeController extends Controller
         // You may want to associate it with the user, URL, and name
         // ...
 
-        $link = route('frontend.index.yt-download-mp3', ['id' => $id, 'filename' => $filename, 'token' => $token]);
+        $link = route('index.yt-download-mp3', ['id' => $id, 'filename' => $filename, 'token' => $token]);
 
         return $link;
     }
 
     public function download($id) {
+        if (Storage::disk('public')->exists('mp3/'.$id.'/metadata')) {
+            foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/metadata') as $file) {
+                if (pathinfo($file, PATHINFO_EXTENSION) == 'json') {
+                    $video = json_decode(Storage::disk('public')->get($file));
+                    $notfound = false;
+                    return view('y2mate.download', compact('video', 'notfound'));
+                    break;
+                }
+            }
+        }
         $yt = new YoutubeDl();
-        // $yt->setBinPath('/usr/local/bin/youtube-dl');
+       // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
         $collection = $yt->download(
             Options::create()
+                ->maxFileSize('150m')
                 ->skipDownload(true)
-                ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata'))
+                ->cleanupMetadata(false)
+                ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata/'))
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
         foreach ($collection->getVideos() as $video) {
             if ($video->getError() !== null) {
-                echo "Error downloading video: {$video->getError()}.";
+                $notfound = true;
+                return view('y2mate.download', compact('video', 'notfound'));
             } else {
             }
         }
 
-        return view('y2mate.download', compact('video'));
+        $notfound = false;
+        return view('y2mate.download', compact('video', 'notfound'));
     }
 
     public function convert_api(Request $request) {
