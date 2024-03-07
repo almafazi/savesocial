@@ -56,7 +56,7 @@ class YoutubeController extends Controller
     //         }
     //     }
 
-    //     $notfound = false;
+         $notfound = false;
         return view('y2mate.download', compact('id'));
     }
 
