@@ -28,11 +28,11 @@ class YoutubeController extends Controller
 
     public function download($id) {
         $yt = new YoutubeDl();
-        $yt->setBinPath('/usr/local/bin/yt-dlp');
+        $yt->setBinPath('/usr/local/bin/youtube-dl');
         $collection = $yt->download(
             Options::create()
                 ->skipDownload(true)
-                ->downloadPath(storage_path('app/public/mp3'))
+                ->downloadPath(storage_path('app/public/mp3/'.$id))
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
 
@@ -52,11 +52,11 @@ class YoutubeController extends Controller
         $yt->setBinPath('/usr/local/bin/yt-dlp');
         $collection = $yt->download(
             Options::create()
-                ->downloadPath(storage_path('app/public/mp3'))
+                ->downloadPath(storage_path('app/public/mp3/'.$id))
                 ->extractAudio(true)
                 ->audioFormat('mp3')
-                ->preferFFmpeg(true)
-                ->ffmpegLocation('/usr/bin/ffmpeg')
+                // ->preferFFmpeg(true)
+                // ->ffmpegLocation('/usr/bin/ffmpeg')
                 ->audioQuality('0')
                 ->output('%(title)s.%(ext)s')
                 ->url('https://www.youtube.com/watch?v='.$id)
