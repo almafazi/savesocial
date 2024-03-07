@@ -55,6 +55,8 @@ class YoutubeController extends Controller
                 ->downloadPath(storage_path('app/public/mp3'))
                 ->extractAudio(true)
                 ->audioFormat('mp3')
+                ->preferFFmpeg(true)
+                ->ffmpegLocation('/usr/bin/ffmpeg')
                 ->audioQuality('0')
                 ->output('%(title)s.%(ext)s')
                 ->url('https://www.youtube.com/watch?v='.$id)
