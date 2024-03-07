@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessMP3;
 use getID3;
 use getid3_writetags;
 use Illuminate\Http\Request;
@@ -84,6 +85,7 @@ class YoutubeController extends Controller
                 }
             }
         } else {
+            //ProcessMP3::dispatch($id);
             $yt = new YoutubeDl();
             $yt->setBinPath('/usr/local/bin/yt-dlp');
             $collection = $yt->download(
