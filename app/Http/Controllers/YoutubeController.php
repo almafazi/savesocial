@@ -38,7 +38,7 @@ class YoutubeController extends Controller
             }
         }
         $yt = new YoutubeDl();
-        $yt->setBinPath('/usr/local/bin/yt-dlp');
+       // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
         $collection = $yt->download(
             Options::create()
                 ->maxFileSize('150m')
@@ -47,8 +47,6 @@ class YoutubeController extends Controller
                 ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata/'))
                 ->url('https://www.youtube.com/watch?v='.$id)
         );
-
-        dd($collection);
 
         foreach ($collection->getVideos() as $video) {
             if ($video->getError() !== null) {
