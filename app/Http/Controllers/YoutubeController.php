@@ -14,14 +14,14 @@ use Illuminate\Support\Str;
 
 class YoutubeController extends Controller
 {
-    public function generateMp3DownloadLink($url)
+    public function generateMp3DownloadLink($id, $filename)
     {
         $token = Str::random(16); // Generate a random token
         // Save the token and other details in the database for validation later
         // You may want to associate it with the user, URL, and name
         // ...
 
-        $link = route('frontend.index.yt-download-mp3', ['url' => $url, 'token' => $token]);
+        $link = route('frontend.index.yt-download-mp3', ['id' => $id, 'filename' => $filename, 'token' => $token]);
 
         return $link;
     }
@@ -100,7 +100,7 @@ class YoutubeController extends Controller
                             "title" =>
                                 $video->getTitle(),
                             "link" =>
-                                $this->generateMp3DownloadLink(Crypt::encryptString($video->getFile()->getFilename())),
+                                $this->generateMp3DownloadLink(Crypt::encryptString($video->getId()), Crypt::encryptString($video->getFile()->getFilename())),
                             "duration" => $video->getDuration(),
                             "msg" => "success",
                             "status" => "ok",
@@ -173,7 +173,7 @@ class YoutubeController extends Controller
                         "title" => $video->getTitle(),
                         "ftype" => "mp3",
                         "fquality" => "128",
-                        "dlink" => $this->generateMp3DownloadLink(Crypt::encryptString($video->getFile()->getFilename()))
+                        "dlink" => $this->generateMp3DownloadLink(Crypt::encryptString($video->getId()), Crypt::encryptString($video->getFile()->getFilename()))
                     ]);
 
                 }else{
@@ -184,8 +184,8 @@ class YoutubeController extends Controller
 
     }
 
-    public function download_mp3($url) {
-        return response()->download(public_path('mp3/'.Crypt::decryptString($url)));
+    public function download_mp3($id, $filename) {
+        return response()->download(storage_path('app/public/mp3/'.Crypt::decryptString($id)).'/'.Crypt::decryptString($filename));
     }
     
     public function analyze(Request $request) {

@@ -64,12 +64,7 @@ function mp3Conversion(id, cfToken = null){
 				var dlink = data.link + '&dom=Iframe';
 				$("#downloadButton").attr("href",dlink);				
 				$("body").append('<iframe src="' + dlink + '" style="display: none;" ></iframe>');
-								if(typeof gtag !== "undefined"){
-					gtag('event', 'MP3download', {
-					  'event_category': 'ok',
-					  'event_label': id
-					});
-				}
+	
 			} else if (data.status == "processing"){
 				if(data.progress){
 					if(parseInt(data.progress) < 10){
@@ -103,13 +98,6 @@ function mp3Conversion(id, cfToken = null){
 			// setTimeout(function(){mp3Conversion(id, window.cfToken)}, 1);
 		}
 	});
-	if(typeof turnstile === "undefined" && (typeof window.tS === "undefined" || typeof window.tH === "undefined") && typeof gtag !== "undefined"){
-		Cookies.set("m3aytj_test", 0, {secure: true, sameSite: 'none'});
-		gtag('event', 'Cookie', {
-			'event_category': 'Failed',
-			'event_label': id + ' ' + Cookies.get("m3aytj_test") + ' ' + navigator.userAgent 
-		});
-	}
 }
 function ping(u){
 	$.ajax({
