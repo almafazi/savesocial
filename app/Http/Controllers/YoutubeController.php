@@ -57,7 +57,7 @@ class YoutubeController extends Controller
     //     }
 
          $notfound = false;
-        return view('y2mate.download', compact('id'));
+        return view('y2mate.download', compact('id', 'notfound'));
     }
 
     public function convert_api(Request $request) {
