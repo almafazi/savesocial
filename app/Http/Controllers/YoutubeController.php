@@ -28,7 +28,7 @@ class YoutubeController extends Controller
 
     public function download($id) {
         $yt = new YoutubeDl();
-        // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
+        $yt->setBinPath('/usr/local/bin/yt-dlp');
         $collection = $yt->download(
             Options::create()
                 ->skipDownload(true)
@@ -49,7 +49,7 @@ class YoutubeController extends Controller
     public function convert_api(Request $request) {
         $id = $request->id;
         $yt = new YoutubeDl();
-        // $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
+        $yt->setBinPath('/usr/local/bin/yt-dlp');
         $collection = $yt->download(
             Options::create()
                 ->downloadPath(storage_path('app/public/mp3'))
