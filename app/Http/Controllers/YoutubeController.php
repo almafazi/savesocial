@@ -38,7 +38,7 @@ class YoutubeController extends Controller
             }
         }
         $yt = new YoutubeDl();
-        $yt->setBinPath('/usr/local/bin/youtube-dl');
+        // $yt->setBinPath('/usr/local/bin/youtube-dl');
         $collection = $yt->download(
             Options::create()
                 ->maxFileSize('150m')
