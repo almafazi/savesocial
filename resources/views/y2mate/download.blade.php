@@ -27,7 +27,7 @@
 <div id="percentageText">
 <span id="dt">{{ $notfound ? 'Not Found!' : 'Download MP3' }}</span><div class="buttonTitle">
     <span>{{ $video->title ?? $video->getTitle() }}</span>
-    <span class="filesize">{{  humanFilesize($video->filesize ?? $video->getFilesize()) }}</span>
+    {{-- <span class="filesize">{{  humanFilesize($video->filesize ?? $video->getFilesize()) }}</span> --}}
 </div>
 </div>
 </div>
