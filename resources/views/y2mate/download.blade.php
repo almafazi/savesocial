@@ -26,7 +26,9 @@
 <div id="container" class="progress-button">
 <div id="percentageText">
 <span id="dt">{{ 'Download MP3' }}</span><div class="buttonTitle">
-    {{-- <span>{{ $video->title ?? $video->getTitle() }}</span> --}}
+    @if(request()->query('title'))
+    <span>{{ request()->query('title') }}</span>
+    @endif
     {{-- <span class="filesize">{{  humanFilesize($video->filesize ?? $video->getFilesize()) }}</span> --}}
 </div>
 </div>
