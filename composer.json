@@ -21,7 +21,7 @@
         "nasirkhan/module-manager": "^1.0",
         "norkunas/youtube-dl-php": "dev-master",
         "nwidart/laravel-modules": "^10.0",
-        "predis/predis": "^2.1",
+        "predis/predis": "^2.2",
         "raiym/instagram-php-scraper": "^0.12.9",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-backup": "^8.1",
