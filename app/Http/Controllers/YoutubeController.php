@@ -14,6 +14,18 @@ use Illuminate\Support\Str;
 
 class YoutubeController extends Controller
 {
+    public function generateMp3ConvertLink($id)
+    {
+        $token = Str::random(16); // Generate a random token
+        // Save the token and other details in the database for validation later
+        // You may want to associate it with the user, URL, and name
+        // ...
+
+        $link = route('frontend.index.yt-convert-mp3', ['id' => $id, 'token' => $token]);
+
+        return $link;
+    }
+
     public function generateMp3DownloadLink($id, $filename)
     {
         $token = Str::random(16); // Generate a random token
@@ -144,6 +156,7 @@ class YoutubeController extends Controller
     public function convert(Request $request) {
         $id = $request->vid;
         $yt = new YoutubeDl();
+        $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
         $collection = $yt->download(
             Options::create()
                 ->downloadPath(public_path('mp3'))
@@ -215,57 +228,118 @@ class YoutubeController extends Controller
     public function analyze(Request $request) {
         $url = $request->k_query;
         $menu = $request->menu;
-        
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json'
-        ])->acceptJson()->post('http://192.53.116.208:9009/api/json',[
-            'url' => $url,
-            "aFormat" => "mp3",
-            "filenamePattern" => "classic",
-            "dubLang" => false,
-            "isAudioOnly" => true,
-            "isNoTTWatermark" => true
-        ]);
-
-        $posts = $response->collect();
-
-
-        if($posts['status'] == 'error') {
-            return response()->json([
-                "error" => "YT URL is not valid!"
-            ]);
-        };
-
-        if($posts->count() == 0) {
-            return response()->json([]);
-        };
-
-        $posts = $posts->toArray();
 
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-        $youtube_id = $match[1];
+        $id = $match[1];
+
+        if (Storage::disk('public')->exists('mp3/'.$id.'/metadata')) {
+            foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/metadata') as $file) {
+                if (pathinfo($file, PATHINFO_EXTENSION) == 'json') {
+                    $video = json_decode(Storage::disk('public')->get($file));
+
+                    
+                    return response()->json([
+                        "status" => "ok", 
+                        "mess" => "", 
+                        "page" => "detail", 
+                        "vid" => $video->id, 
+                        "extractor" => "youtube", 
+                        "title" => $video->title, 
+                        "t" => $video->duration, 
+                        "a" => $video->uploader,  
+                        "links" => [
+                              "mp3" => [
+                                "mp3128" => [
+                                "size" => humanFilesize($video->filesize), 
+                                "f" => "mp3", 
+                                "q" => "128kbps", 
+                                "q_text" => "MP3 - 128kbps", 
+                                    $this->generateMp3ConvertLink(Crypt::encryptString($id)),
+                                ] 
+                            ] 
+                        ], 
+                        "related" => [
+                            [
+                                "title" => "Related Videos", 
+                                "contents" => [
+                                ] 
+                            ] 
+                        ] 
+                     ]); 
+                    break;
+                }
+            }
+        }
+
+        $yt = new YoutubeDl();
+        $yt->setBinPath('/opt/homebrew/bin/youtube-dl');
+        $collection = $yt->download(
+            Options::create()
+                ->skipDownload(true)
+                ->extractAudio(true)
+                ->cleanupMetadata(false)
+                ->audioFormat('mp3')
+                ->downloadPath(storage_path('app/public/mp3/'.$id.'/metadata'))
+                ->url('https://www.youtube.com/watch?v='.$id)
+        );
+
+        foreach ($collection->getVideos() as $video) {
+            if ($video->getError() !== null) {
+                echo "Error downloading video: {$video->getError()}.";
+            } else {
+            }
+        }
+        
+        // $response = Http::withHeaders([
+        //     'Content-Type' => 'application/json'
+        // ])->acceptJson()->post('http://192.53.116.208:9009/api/json',[
+        //     'url' => $url,
+        //     "aFormat" => "mp3",
+        //     "filenamePattern" => "classic",
+        //     "dubLang" => false,
+        //     "isAudioOnly" => true,
+        //     "isNoTTWatermark" => true
+        // ]);
+
+        // $posts = $response->collect();
+
+
+        // if($posts['status'] == 'error') {
+        //     return response()->json([
+        //         "error" => "YT URL is not valid!"
+        //     ]);
+        // };
+
+        // if($posts->count() == 0) {
+        //     return response()->json([]);
+        // };
+
+        // $posts = $posts->toArray();
+
+        // preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+        // $youtube_id = $match[1];
 
 
         return response()->json([
             "status" => "ok", 
             "mess" => "", 
             "page" => "detail", 
-            "vid" => $posts['metadata']['attribute']['id'], 
+            "vid" => $video->getId(), 
             "extractor" => "youtube", 
-            "title" => $posts['metadata']['attribute']['title'], 
-            "t" => 4403, 
-            "a" => $posts['metadata']['attribute']['author'],  
+            "title" => $video->getTitle(), 
+            "t" => $video->getDuration(), 
+            "a" => $video->getUploader(),  
             "links" => [
-                  "mp3" => [
-                                    "mp3128" => [
-                                          "size" => "63.6 MB", 
-                                          "f" => "mp3", 
-                                          "q" => "128kbps", 
-                                          "q_text" => "MP3 - 128kbps", 
-                                          "k" => $this->generateMp3DownloadLink($posts['metadata']['attribute']['id'], $posts['metadata']['attribute']['title'])
-                                       ] 
-                    ] 
-            ], 
+                "mp3" => [
+                  "mp3128" => [
+                  "size" => humanFilesize($video->getFilesize()), 
+                  "f" => "mp3", 
+                  "q" => "128kbps", 
+                  "q_text" => "MP3 - 128kbps", 
+                      $this->generateMp3ConvertLink(Crypt::encryptString($video->getId())),
+                  ] 
+              ] 
+          ], 
             "related" => [
                 [
                     "title" => "Related Videos", 
