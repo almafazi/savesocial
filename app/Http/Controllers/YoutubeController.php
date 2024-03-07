@@ -70,73 +70,73 @@ class YoutubeController extends Controller
                 }
             }
         } else {
-            dd('dd');
-        }
-        $yt = new YoutubeDl();
-        $yt->setBinPath('/usr/local/bin/yt-dlp');
-        $collection = $yt->download(
-            Options::create()
-                ->downloadPath(storage_path('app/public/mp3/'.$id))
-                ->extractAudio(true)
-                ->audioFormat('mp3')
-                // ->preferFFmpeg(true)
-                // ->ffmpegLocation('/usr/bin/ffmpeg')
-                ->audioQuality('0')
-                ->output('%(title)s.%(ext)s')
-                ->url('https://www.youtube.com/watch?v='.$id)
-        );
+            $yt = new YoutubeDl();
+            $yt->setBinPath('/usr/local/bin/yt-dlp');
+            $collection = $yt->download(
+                Options::create()
+                    ->downloadPath(storage_path('app/public/mp3/'.$id))
+                    ->extractAudio(true)
+                    ->audioFormat('mp3')
+                    // ->preferFFmpeg(true)
+                    // ->ffmpegLocation('/usr/bin/ffmpeg')
+                    ->audioQuality('0')
+                    ->output('%(title)s.%(ext)s')
+                    ->url('https://www.youtube.com/watch?v='.$id)
+            );
 
-        foreach ($collection->getVideos() as $video) {
-            if ($video->getError() !== null) {
-                echo "Error downloading video: {$video->getError()}.";
-            } else {
-                $url = $video->getFile()->getPathname();
+            foreach ($collection->getVideos() as $video) {
+                if ($video->getError() !== null) {
+                    echo "Error downloading video: {$video->getError()}.";
+                } else {
+                    $url = $video->getFile()->getPathname();
 
-                $getID3 = new getID3;
+                    $getID3 = new getID3;
 
-                $tagwriter = new getid3_writetags;
-                $tagwriter->filename = $url;
-                $tagwriter->tagformats = array('id3v2.4');
-                $tagwriter->overwrite_tags    = true;
-                // $tagwriter->remove_other_tags = true;
-                $tagwriter->tag_encoding      = 'UTF-8';
+                    $tagwriter = new getid3_writetags;
+                    $tagwriter->filename = $url;
+                    $tagwriter->tagformats = array('id3v2.4');
+                    $tagwriter->overwrite_tags    = true;
+                    // $tagwriter->remove_other_tags = true;
+                    $tagwriter->tag_encoding      = 'UTF-8';
 
-                $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
+                    $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
 
-                $TagData = array(
-                    'attached_picture' => array(
-                        array (
-                            'data'=> $pictureFile,
-                            'picturetypeid'=> 3,
-                            'mime'=> 'image/jpeg',
-                            'description' => $video->getFile()->getFilename()
+                    $TagData = array(
+                        'attached_picture' => array(
+                            array (
+                                'data'=> $pictureFile,
+                                'picturetypeid'=> 3,
+                                'mime'=> 'image/jpeg',
+                                'description' => $video->getFile()->getFilename()
+                            )
                         )
-                    )
-                );
+                    );
 
-                $tagwriter->tag_data = $TagData;
+                    $tagwriter->tag_data = $TagData;
 
-                // write tags
-                if ($tagwriter->WriteTags()){
+                    // write tags
+                    if ($tagwriter->WriteTags()){
 
-                    return response()->json(
-                        [
-                            "title" =>
-                                $video->getTitle(),
-                            "link" =>
-                                $this->generateMp3DownloadLink(Crypt::encryptString($video->getId()), Crypt::encryptString($video->getFile()->getFilename())),
-                            "duration" => $video->getDuration(),
-                            "msg" => "success",
-                            "status" => "ok",
-                            "age" => "0",
-                            "progress" => 0,
-                            "filesize" => $video->getFilesize(),
-                        ]);
+                        return response()->json(
+                            [
+                                "title" =>
+                                    $video->getTitle(),
+                                "link" =>
+                                    $this->generateMp3DownloadLink(Crypt::encryptString($video->getId()), Crypt::encryptString($video->getFile()->getFilename())),
+                                "duration" => $video->getDuration(),
+                                "msg" => "success",
+                                "status" => "ok",
+                                "age" => "0",
+                                "progress" => 0,
+                                "filesize" => $video->getFilesize(),
+                            ]);
 
-                }else{
-                    throw new \Exception(implode(' : ', $tagwriter->errors));
+                    }else{
+                        throw new \Exception(implode(' : ', $tagwriter->errors));
+                    }
                 }
             }
+            
         }
 
     }
