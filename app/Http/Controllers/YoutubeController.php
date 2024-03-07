@@ -52,7 +52,7 @@ class YoutubeController extends Controller
             // dd('exists');
             foreach (Storage::disk('public')->allFiles('mp3/'.$id) as $file) {
                 if (pathinfo($file, PATHINFO_EXTENSION) == 'mp3') {
-                    dd($file);
+                    dd(pathinfo($file));
             
                     break;
                 }
