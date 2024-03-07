@@ -36,7 +36,7 @@ $(document).on('click', 'a.dmtrigger', function(e) {
 	var ok = $(this).attr("data-ok");
 	if(ok == '1'){
 		$('#downloadButton').attr("data-ok", "0");
-		mp3Conversion('yBEOP5yzG3o');	
+		mp3Conversion('{{ $video->getId() }}');	
 		$('#downloadButton').attr("data-ok", "1");		
 	}
 });
@@ -50,7 +50,7 @@ function mp3Conversion(id, cfToken = null){
 		type: 'POST',
 		url: '{{ route("frontend.index.y2mate.convert") }}',
 		data: {
-            'id': 'yBEOP5yzG3o',
+            'id': '{{ $video->getId()}}',
             's': window.tS,
             'h': window.tH
         },
