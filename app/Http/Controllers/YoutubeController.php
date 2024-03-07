@@ -49,7 +49,14 @@ class YoutubeController extends Controller
     public function convert_api(Request $request) {
         $id = $request->id;
         if (Storage::disk('public')->exists('mp3/'.$id)) {
-            dd('exists');
+            // dd('exists');
+            foreach (Storage::disk('public')->allFiles('mp3/'.$id) as $file) {
+                if (pathinfo($file, PATHINFO_EXTENSION) == 'mp3') {
+                    dd($file);
+            
+                    break;
+                }
+            }
         } else {
             dd('dd');
         }
