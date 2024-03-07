@@ -64,7 +64,6 @@ class YoutubeController extends Controller
             if ($video->getError() !== null) {
                 echo "Error downloading video: {$video->getError()}.";
             } else {
-                dd($video);
                 $url = $video->getFile()->getPathname();
 
                 $getID3 = new getID3;
@@ -100,12 +99,12 @@ class YoutubeController extends Controller
                                 $video->getTitle(),
                             "link" =>
                                 $this->generateMp3DownloadLink(Crypt::encryptString($video->getFile()->getFilename())),
-                            "duration" => 6840.476794741985,
+                            "duration" => $video->getDuration(),
                             "msg" => "success",
                             "status" => "ok",
                             "age" => "0",
                             "progress" => 0,
-                            "filesize" => 109731214,
+                            "filesize" => $video->getFilesize(),
                         ]);
 
                 }else{
