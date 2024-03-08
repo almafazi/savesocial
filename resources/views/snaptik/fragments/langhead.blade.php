@@ -1,0 +1,17 @@
+<link rel="alternate" hreflang="x-default" href="{{ url('/') }}">
+<link rel="alternate" hreflang="en" href="{{ url('/') }}">
+<link rel="alternate" hreflang="en-in" href="{{ url('/') }}/in/">
+<link rel="alternate" hreflang="vi" href="{{ url('/') }}/vn/">
+<link rel="alternate" hreflang="tr" href="{{ url('/') }}/tr/">
+<link rel="alternate" hreflang="id-ID" href="{{ url('/') }}/ID/">
+<link rel="alternate" hreflang="fr" href="{{ url('/') }}/fr/">
+<link rel="alternate" hreflang="pt" href="{{ url('/') }}/pt/">
+<link rel="alternate" hreflang="es" href="{{ url('/') }}/es/">
+<link rel="alternate" hreflang="ms" href="{{ url('/') }}/ms/">
+<link rel="alternate" hreflang="ko" href="{{ url('/') }}/ko/">
+<link rel="alternate" hreflang="ja" href="{{ url('/') }}/ja/">
+<link rel="alternate" hreflang="jv" href="{{ url('/') }}/jv/">
+<link rel="alternate" hreflang="de" href="{{ url('/') }}/de/">
+<link rel="alternate" hreflang="it" href="{{ url('/') }}/it/">
+<link rel="alternate" hreflang="ko" href="{{ url('/') }}/ko/">
+<link rel="alternate" hreflang="in" href="{{ url('/') }}/in/">

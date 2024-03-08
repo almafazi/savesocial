@@ -14,4 +14,5 @@
     <li class="lang-item" data-id="ar"><a class="dropdown-item" href="{{ url('/') }}/ar/">عَرَبِّ</a></li>
     <li class="lang-item" data-id="ko"><a class="dropdown-item" href="{{ url('/') }}/ko/">한국어</a></li>
     <li class="lang-item" data-id="ja"><a class="dropdown-item" href="{{ url('/') }}/ja/">本語</a></li>
+    <li class="lang-item" data-id="in"><a class="dropdown-item" href="{{ url('/') }}/in/">भारतीय भाषाएँ</a></li>
 </ul>

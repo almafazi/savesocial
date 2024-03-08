@@ -1,28 +1,28 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>SnapTik: Tiktok Downloader - Download Tiktok Videos Without Watermark for Free</title>
+<title>Snaptik - قم بتنزيل مقاطع فيديو TikTok بدون علامة مائية مجانًا وسهل - أداة تنزيل TikTok</title>
 <meta name="robots" content="index,follow">
 <meta name="revisit-after" content="1 days">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, shrink-to-fit=no">
 <meta name="color-scheme" content="dark light">
-<meta itemprop="name" content="SnapTik: Tiktok Downloader - Download Tiktok Videos Without Watermark for Free">
-<meta name="description" content="TikTok Video Downloader - SnapTik is an online TikTok video downloader that allows users to download TikTok videos without watermark quickly and easily. Snaptik is compatible with multiple devices, including mobile phones, tablets, and computers.">
+<meta itemprop="name" content="Snaptik - قم بتنزيل مقاطع فيديو TikTok بدون علامة مائية مجانًا وسهل - أداة تنزيل TikTok">
+<meta name="description" content="أدوات تنزيل فيديو TikTok - SnapTik هو أداة تنزيل فيديو TikTok عبر الإنترنت تتيح للمستخدمين تنزيل مقاطع فيديو TikTok بدون علامة مائية بسرعة وسهولة. Snaptik متوافق مع أجهزة متعددة، بما في ذلك الهواتف المحمولة والأجهزة اللوحية وأجهزة الكمبيوتر ولا يتطلب التسجيل.">
 <meta name="author" content="Admin">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="ar">
 <meta itemprop="image" content="{{ asset('snaptik/assets/img/snapthumb.jpg') }}">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SnapTik: Tiktok Downloader - Download Tiktok Videos Without Watermark for Free">
-<meta name="twitter:description" content="TikTok Video Downloader - SnapTik is an online TikTok video downloader that allows users to download TikTok videos without watermark quickly and easily. Snaptik is compatible with multiple devices, including mobile phones, tablets, and computers.">
+<meta name="twitter:title" content="Snaptik - قم بتنزيل مقاطع فيديو TikTok بدون علامة مائية مجانًا وسهل - أداة تنزيل TikTok">
+<meta name="twitter:description" content="أدوات تنزيل فيديو TikTok - SnapTik هو أداة تنزيل فيديو TikTok عبر الإنترنت تتيح للمستخدمين تنزيل مقاطع فيديو TikTok بدون علامة مائية بسرعة وسهولة. Snaptik متوافق مع أجهزة متعددة، بما في ذلك الهواتف المحمولة والأجهزة اللوحية وأجهزة الكمبيوتر ولا يتطلب التسجيل.">
 <meta name="twitter:image:src" content="{{ asset('snaptik/assets/img/snapthumb.jpg') }}">
 <meta name="twitter:site" content="SnapTik">
-<meta property="og:title" content="SnapTik: Tiktok Downloader - Download Tiktok Videos Without Watermark for Free">
+<meta property="og:title" content="Snaptik - قم بتنزيل مقاطع فيديو TikTok بدون علامة مائية مجانًا وسهل - أداة تنزيل TikTok">
 <meta property="og:type" content="article">
 <meta property="og:image" content="{{ asset('snaptik/assets/img/snapthumb.jpg') }}">
-<meta property="og:description" content="TikTok Video Downloader - SnapTik is an online TikTok video downloader that allows users to download TikTok videos without watermark quickly and easily. Snaptik is compatible with multiple devices, including mobile phones, tablets, and computers.">
+<meta property="og:description" content="أدوات تنزيل فيديو TikTok - SnapTik هو أداة تنزيل فيديو TikTok عبر الإنترنت تتيح للمستخدمين تنزيل مقاطع فيديو TikTok بدون علامة مائية بسرعة وسهولة. Snaptik متوافق مع أجهزة متعددة، بما في ذلك الهواتف المحمولة والأجهزة اللوحية وأجهزة الكمبيوتر ولا يتطلب التسجيل.">
 <meta property="og:site_name" content="SnapTik">
 <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('snaptik/assets/img/icons-192.png') }}">
 <link rel="shortcut icon" href="{{ asset('snaptik/assets/img/favicon.png') }}">
@@ -59,28 +59,8 @@
             .z-menu ul a:hover { text-decoration: underline; }
             .copyright .footer-copyright { padding-bottom: 30px; justify-content: center; }
         </style>
-<link rel="alternate" hreflang="x-default" href="{{ url('/') }}">
-<link rel="alternate" hreflang="en" href="{{ url('/') }}">
-<link rel="alternate" hreflang="en-in" href="{{ url('/') }}/in/">
-<link rel="alternate" hreflang="vi" href="{{ url('/') }}/vn/">
-<link rel="alternate" hreflang="tr" href="{{ url('/') }}/tr/">
-<link rel="alternate" hreflang="id-ID" href="{{ url('/') }}/ID/">
-<link rel="alternate" hreflang="fr" href="{{ url('/') }}/fr/">
-<link rel="alternate" hreflang="pt" href="{{ url('/') }}/pt/">
-<link rel="alternate" hreflang="ru" href="{{ url('/') }}/ru/">
-<link rel="alternate" hreflang="es" href="{{ url('/') }}/es/">
-<link rel="alternate" hreflang="ms" href="{{ url('/') }}/ms/">
-<link rel="alternate" hreflang="ko" href="{{ url('/') }}/ko/">
-<link rel="alternate" hreflang="ja" href="{{ url('/') }}/ja/">
-<link rel="alternate" hreflang="jv" href="{{ url('/') }}/jv/">
-<link rel="alternate" hreflang="cs" href="{{ url('/') }}/cs/">
-<link rel="alternate" hreflang="de" href="{{ url('/') }}/de/">
-<link rel="alternate" hreflang="it" href="{{ url('/') }}/it/">
-<link rel="alternate" hreflang="pl" href="{{ url('/') }}/pl/">
-<link rel="alternate" hreflang="hu" href="{{ url('/') }}/hu/">
-<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl/">
-<link rel="alternate" hreflang="ro" href="{{ url('/') }}/ro/">
-<link rel="alternate" hreflang="el" href="{{ url('/') }}/el/">
+
+@include('snaptik.fragments.langhead')
 <link rel="canonical" href="{{ url('/') }}/en/">
 <script type="text/javascript">
             var STORAGE_KEY = 'SNAPTIK';
@@ -286,6 +266,6 @@
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('snaptik/assets/js/main.js') }}" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
-<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"TikTok Video Downloader - SnapTik is an online TikTok video downloader that allows users to download TikTok videos without watermark quickly and easily. Snaptik is compatible with multiple devices, including mobile phones, tablets, and computers.","email":"snaptikltd@gmail.com"}</script>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"أدوات تنزيل فيديو TikTok - SnapTik هو أداة تنزيل فيديو TikTok عبر الإنترنت تتيح للمستخدمين تنزيل مقاطع فيديو TikTok بدون علامة مائية بسرعة وسهولة. Snaptik متوافق مع أجهزة متعددة، بما في ذلك الهواتف المحمولة والأجهزة اللوحية وأجهزة الكمبيوتر ولا يتطلب التسجيل.","email":"snaptikltd@gmail.com"}</script>
 </body>
 </html>
