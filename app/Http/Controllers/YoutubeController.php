@@ -187,7 +187,7 @@ class YoutubeController extends Controller
                             "title" =>
                                 'test',
                             "link" =>
-                            str_replace('https://192.53.116.208/', 'http://192.53.116.208:9009/', $posts['url']),
+                            str_replace('https://192.53.116.208/', 'https://cdn.snaptik.vip/converting/', $posts['url']),
                             "duration" => '-',
                             "msg" => "success",
                             "status" => "ok",
