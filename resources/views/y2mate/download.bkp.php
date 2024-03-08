@@ -58,14 +58,16 @@ function mp3Conversion(id, cfToken = null){
         }
     });
 	$.ajax({
-		type: 'GET',
-		url: 'https://cdn.snaptik.vip/cdn/convert/{{ $id }}',
+		type: 'POST',
+		url: '{{ route("index.y2mate.convert") }}',
 		data: {
+            'id': '{{ $id }}',
+            's': window.tS,
+            'h': window.tH
         },
-		success: function(data, textStatus, request){	
-			console.log(data);			
-			    $("#downloadButton").removeClass("dmtrigger");
-			        if(data.status == "done") {
+		success: function(data, textStatus, request){				
+			        $("#downloadButton").removeClass("dmtrigger");
+			        if(data.status == "ok") {
 				        if(typeof turnstile !== "undefined"){
                             turnstile.remove(window.turnstileWID);
                         }
@@ -74,13 +76,16 @@ function mp3Conversion(id, cfToken = null){
 				$("#downloadButton").attr("href",dlink);				
 				$("body").append('<iframe src="' + dlink + '" style="display: none;" ></iframe>');
 	
-			} 
-			else if (data.status == "converting"){
+			} else if (data.status == "processing"){
 				if(data.progress){
-					$("#dt").text('Converting ' + data.progress+'%');
+					if(parseInt(data.progress) < 10){
+						$("#dt").text('Converting ' + '10%'); 
+					}else{
+						$("#dt").text('Converting ' + data.progress+'%');
+					}
 				}
-				setTimeout(function(){mp3Conversion(id, cfToken + ".PROGRESS")}, 2500);
-			} else {
+				setTimeout(function(){mp3Conversion(id, cfToken + ".PROGRESS")}, 2000);
+						} else {
 				$('#dt').text('Download Error !');
 				$('.buttonTitle').text(data.msg);
 				if(typeof gtag !== "undefined"){
