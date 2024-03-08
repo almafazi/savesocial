@@ -63,97 +63,138 @@ class YoutubeController extends Controller
 
     public function convert_api(Request $request) {
         $id = $request->id;
-        if (Storage::disk('public')->exists('mp3/'.$id.'/file')) {
-            foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/file') as $file) {
-                if (pathinfo($file, PATHINFO_EXTENSION) == 'mp3') {
-                    $pathinfo = pathinfo($file);
+        // if (Storage::disk('public')->exists('mp3/'.$id.'/file')) {
+        //     foreach (Storage::disk('public')->allFiles('mp3/'.$id.'/file') as $file) {
+        //         if (pathinfo($file, PATHINFO_EXTENSION) == 'mp3') {
+        //             $pathinfo = pathinfo($file);
             
-                    return response()->json(
-                    [
+        //             return response()->json(
+        //             [
+        //                     "title" =>
+        //                         $pathinfo['basename'],
+        //                     "link" =>
+        //                         $this->generateMp3DownloadLink(Crypt::encryptString($id), Crypt::encryptString($pathinfo['basename'])),
+        //                     "duration" => '-',
+        //                     "msg" => "success",
+        //                     "status" => "ok",
+        //                     "age" => "0",
+        //                     "progress" => 0,
+        //                     "filesize" => '-',
+        //             ]);
+        //             break;
+        //         }
+        //     }
+        // } else {
+        //     //ProcessMP3::dispatch($id);
+        //     $yt = new YoutubeDl();
+        //     $yt->setBinPath('/usr/local/bin/yt-dlp');
+        //     $collection = $yt->download(
+        //         Options::create()
+        //             ->downloadPath(storage_path('app/public/mp3/'.$id.'/file'))
+        //             ->extractAudio(true)
+        //             ->audioFormat('mp3')
+        //             // ->preferFFmpeg(true)
+        //             // ->ffmpegLocation('/usr/bin/ffmpeg')
+        //             ->audioQuality('0')
+        //             ->output('%(title)s.%(ext)s')
+        //             ->url('https://www.youtube.com/watch?v='.$id)
+        //     );
+
+        //     foreach ($collection->getVideos() as $video) {
+        //         if ($video->getError() !== null) {
+        //             echo "Error downloading video: {$video->getError()}.";
+        //         } else {
+        //             $url = $video->getFile()->getPathname();
+
+        //             $getID3 = new getID3;
+
+        //             $tagwriter = new getid3_writetags;
+        //             $tagwriter->filename = $url;
+        //             $tagwriter->tagformats = array('id3v2.4');
+        //             $tagwriter->overwrite_tags    = true;
+        //             // $tagwriter->remove_other_tags = true;
+        //             $tagwriter->tag_encoding      = 'UTF-8';
+
+        //             $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
+
+        //             $TagData = array(
+        //                 'attached_picture' => array(
+        //                     array (
+        //                         'data'=> $pictureFile,
+        //                         'picturetypeid'=> 3,
+        //                         'mime'=> 'image/jpeg',
+        //                         'description' => $video->getFile()->getFilename()
+        //                     )
+        //                 )
+        //             );
+
+        //             $tagwriter->tag_data = $TagData;
+
+        //             // write tags
+        //             if ($tagwriter->WriteTags()){
+
+        //                 return response()->json(
+        //                     [
+        //                         "title" =>
+        //                             $video->getTitle(),
+        //                         "link" =>
+        //                             $this->generateMp3DownloadLink(Crypt::encryptString($video->getId()), Crypt::encryptString($video->getFile()->getFilename())),
+        //                         "duration" => $video->getDuration(),
+        //                         "msg" => "success",
+        //                         "status" => "ok",
+        //                         "age" => "0",
+        //                         "progress" => 0,
+        //                         "filesize" => $video->getFilesize(),
+        //                     ]);
+
+        //             }else{
+        //                 throw new \Exception(implode(' : ', $tagwriter->errors));
+        //             }
+        //         }
+        //     }
+            
+        // }
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->acceptJson()->post('http://192.53.116.208:9009/api/json',[
+            'url' => 'https://www.youtube.com/watch?v='.$request->id,
+            "aFormat" => "mp3",
+            "filenamePattern" => "classic",
+            "dubLang" => false,
+            "isAudioOnly" => true,
+            "isNoTTWatermark" => true
+        ]);
+
+        $posts = $response->collect();
+
+
+        if($posts['status'] == 'error') {
+            return response()->json([
+                "error" => "YT URL is not valid!"
+            ]);
+        };
+
+        if($posts->count() == 0) {
+            return response()->json([]);
+        };
+
+        $posts = $posts->toArray();
+
+
+        return response()->json(
+        [
                             "title" =>
-                                $pathinfo['basename'],
+                                'test',
                             "link" =>
-                                $this->generateMp3DownloadLink(Crypt::encryptString($id), Crypt::encryptString($pathinfo['basename'])),
+                            str_replace('https://192.53.116.208/', 'http://192.53.116.208:9009/', $posts['url']),
                             "duration" => '-',
                             "msg" => "success",
                             "status" => "ok",
                             "age" => "0",
                             "progress" => 0,
                             "filesize" => '-',
-                    ]);
-                    break;
-                }
-            }
-        } else {
-            //ProcessMP3::dispatch($id);
-            $yt = new YoutubeDl();
-            $yt->setBinPath('/usr/local/bin/yt-dlp');
-            $collection = $yt->download(
-                Options::create()
-                    ->downloadPath(storage_path('app/public/mp3/'.$id.'/file'))
-                    ->extractAudio(true)
-                    ->audioFormat('mp3')
-                    // ->preferFFmpeg(true)
-                    // ->ffmpegLocation('/usr/bin/ffmpeg')
-                    ->audioQuality('0')
-                    ->output('%(title)s.%(ext)s')
-                    ->url('https://www.youtube.com/watch?v='.$id)
-            );
-
-            foreach ($collection->getVideos() as $video) {
-                if ($video->getError() !== null) {
-                    echo "Error downloading video: {$video->getError()}.";
-                } else {
-                    $url = $video->getFile()->getPathname();
-
-                    $getID3 = new getID3;
-
-                    $tagwriter = new getid3_writetags;
-                    $tagwriter->filename = $url;
-                    $tagwriter->tagformats = array('id3v2.4');
-                    $tagwriter->overwrite_tags    = true;
-                    // $tagwriter->remove_other_tags = true;
-                    $tagwriter->tag_encoding      = 'UTF-8';
-
-                    $pictureFile = file_get_contents("https://i.ytimg.com/vi/".$id."/default.jpg");
-
-                    $TagData = array(
-                        'attached_picture' => array(
-                            array (
-                                'data'=> $pictureFile,
-                                'picturetypeid'=> 3,
-                                'mime'=> 'image/jpeg',
-                                'description' => $video->getFile()->getFilename()
-                            )
-                        )
-                    );
-
-                    $tagwriter->tag_data = $TagData;
-
-                    // write tags
-                    if ($tagwriter->WriteTags()){
-
-                        return response()->json(
-                            [
-                                "title" =>
-                                    $video->getTitle(),
-                                "link" =>
-                                    $this->generateMp3DownloadLink(Crypt::encryptString($video->getId()), Crypt::encryptString($video->getFile()->getFilename())),
-                                "duration" => $video->getDuration(),
-                                "msg" => "success",
-                                "status" => "ok",
-                                "age" => "0",
-                                "progress" => 0,
-                                "filesize" => $video->getFilesize(),
-                            ]);
-
-                    }else{
-                        throw new \Exception(implode(' : ', $tagwriter->errors));
-                    }
-                }
-            }
-            
-        }
+        ]);
 
     }
 
