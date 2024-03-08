@@ -5,7 +5,6 @@
 <meta charset="utf-8" />
 <title>Download MP3 - YTJar.info</title>
 <style>html,body{height:100%;padding:0;margin:0;overflow:hidden}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";color:#5e5b64;font-size:24px}@media(max-height:150px) and (max-width:400px){body{font-size:18px}}@media(max-width:200px){body{font-size:14px}}/*button{font-size:1em;border-radius:2px;border:0;height:100%;width:100%;padding:0;margin:0;cursor:pointer}*/.progress-button{display:inline-block;font-size:18px;color:#fff!important;text-decoration:none!important;line-height:1;overflow:hidden;position:relative;text-align:center;width:100%;height:100%;box-shadow:0 1px 1px #ccc;border-radius:2px;cursor:pointer;background-color:#64c896}.buttonTitle{font-size:9px;margin-top:4px}#container{height:100%;text-align:center}#container:before{content:'';display:inline-block;vertical-align:middle;height:100%}#percentageText{width:95%;display:inline-block;position:relative;vertical-align:middle;z-index:3}</style>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 <script src="https://mp3api.ytjar.info/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.js"></script>
