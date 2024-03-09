@@ -59,7 +59,7 @@ function mp3Conversion(id, cfToken = null){
     });
 	$.ajax({
 		type: 'GET',
-		url: 'https://cdn.snaptik.vip/cdn/convert/{{ $id }}',
+		url: 'https://node1.canehill.info/cdn/convert/{{ $id }}',
 		data: {
         },
 		success: function(data, textStatus, request){	
