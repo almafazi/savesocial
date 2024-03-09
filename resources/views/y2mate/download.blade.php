@@ -79,7 +79,7 @@ function mp3Conversion(id, cfToken = null){
 				if(data.progress){
 					$("#dt").text('Converting ' + data.progress+'%');
 				}
-				setTimeout(function(){mp3Conversion(id, cfToken + ".PROGRESS")}, 2500);
+				setTimeout(function(){mp3Conversion(id, cfToken + ".PROGRESS")}, 1000);
 			} else {
 				$('#dt').text('Download Error !');
 				$('.buttonTitle').text(data.msg);
