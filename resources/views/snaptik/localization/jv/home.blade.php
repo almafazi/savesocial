@@ -267,7 +267,7 @@ Sugeng rawuh ing Snaptik.vip, platform sing siap nggawe kita duwe pengalaman dow
 <script type="text/javascript">var url = '{{ url('/') }}';</script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('snaptik/assets/js/main.js') }}" type="text/javascript"></script>
+<script src="{{ asset('snaptik/assets/js/main.js') }}?v=2" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
 <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"Alat Downloader Video TikTok - SnapTik minangka download video TikTok online sing ngidini pangguna ndownload video TikTok tanpa tandha banyu kanthi cepet lan gampang. Snaptik kompatibel karo macem-macem piranti, kalebu telpon seluler, tablet, lan komputer ora perlu registrasi.","email":"snaptikltd@gmail.com"}</script>
 </body>
