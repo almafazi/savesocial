@@ -54,7 +54,7 @@ if (form) {
         var oData = JSON.stringify({
             "url": document.getElementById("url").value,
             "menu": document.getElementsByName("menu")[0]?.value ? document.getElementsByName("menu")[0]?.value : null,
-            "download_url": "http://snaptik.vip/tiktok/download"
+            "download_url": "https://snaptik.vip/tiktok/download"
          });
         progress.classList.add('active');
         runProgress();
