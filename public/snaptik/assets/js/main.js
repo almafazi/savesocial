@@ -49,11 +49,19 @@ var formts = document.forms.namedItem("formurlts");
 var progress = document.querySelector(".progress-box");
 if (form) {
     form.addEventListener('submit', function(ev) {
-        var oData = new FormData(form);
+        //var oData = new FormData(form);
+        progress.classList.add('active');
+        var oData = JSON.stringify({
+            "url": document.getElementById("url").value,
+            "menu": document.getElementsByName("menu")[0]?.value ? document.getElementsByName("menu")[0]?.value : null,
+            "download_url": "http://snaptik.vip/download"
+         });
         progress.classList.add('active');
         runProgress();
         var oReq = new XMLHttpRequest();
-        oReq.open("POST", "/api/check/", true);
+        oReq.open("POST", "https://cdn.snaptik.vip/dl/tiktok", true);
+        oReq.setRequestHeader("Content-Type", "application/json");
+        oReq.setRequestHeader("Accept", "application/json");
         oReq.onload = function(oEvent) {
             if (oReq.status === 200) {
                 var data = JSON.parse(oReq.response);
