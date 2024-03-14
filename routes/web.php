@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\TiktokController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\TiktokDownloadController;
 use App\Http\Controllers\YoutubeController;
 use App\Http\Middleware\RateLimitDownload;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
             'menu' => null
         ]);
     })->name('index');
+
+    Route::get('tiktok/download', [TiktokDownloadController::class, 'index'])->name('index.download');
 
     Route::get('/download-tiktok-mp3', function() {
         return view('snaptik/home', [
