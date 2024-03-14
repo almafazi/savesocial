@@ -27,7 +27,7 @@ class TiktokDownloadController extends Controller
         $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.mp4';
         $url = $decrypted;
         $headers = get_headers($url, 1);
-        header('Content-Length: '.$headers["Content-Length"]);
+        header('Content-Length: '.(is_array($headers["Content-Length"]) ? $headers["Content-Length"][array_key_last($headers["Content-Length"])] : $headers["Content-Length"]));
         header("Content-Transfer-Encoding: Binary");
         header('Content-Type: '.$headers["Content-Type"]); 
         header("Content-disposition: attachment; filename=\"$filename\""); 
@@ -41,7 +41,7 @@ class TiktokDownloadController extends Controller
         $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.mp3';
         $url = $decrypted;
         $headers = get_headers($url, 1);
-        header('Content-Length: '.$headers["Content-Length"]);
+        header('Content-Length: '.(is_array($headers["Content-Length"]) ? $headers["Content-Length"][array_key_last($headers["Content-Length"])] : $headers["Content-Length"]));
         header("Content-Transfer-Encoding: Binary");
         header('Content-Type: '.$headers["Content-Type"]); 
         header("Content-disposition: attachment; filename=\"$filename\""); 
@@ -55,7 +55,7 @@ class TiktokDownloadController extends Controller
         $filename= trim($name).' '.date('d-m-Y Hi').' '.uniqid().'.jpeg';
         $url = $decrypted;
         $headers = get_headers($url, 1);
-        header('Content-Length: '.$headers["Content-Length"]);
+        header('Content-Length: '.(is_array($headers["Content-Length"]) ? $headers["Content-Length"][array_key_last($headers["Content-Length"])] : $headers["Content-Length"]));
         header("Content-Transfer-Encoding: Binary");
         header('Content-Type: '.$headers["Content-Type"]); 
         header("Content-disposition: attachment; filename=\"$filename\""); 
