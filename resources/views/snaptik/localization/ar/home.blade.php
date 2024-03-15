@@ -264,7 +264,7 @@
 <script type="text/javascript">var url = '{{ url('/') }}';</script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('snaptik/assets/js/main.js') }}?v=2" type="text/javascript"></script>
+<script src="{{ asset('snaptik/assets/js/main.js') }}?v=3" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
 <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"أدوات تنزيل فيديو TikTok - SnapTik هو أداة تنزيل فيديو TikTok عبر الإنترنت تتيح للمستخدمين تنزيل مقاطع فيديو TikTok بدون علامة مائية بسرعة وسهولة. Snaptik متوافق مع أجهزة متعددة، بما في ذلك الهواتف المحمولة والأجهزة اللوحية وأجهزة الكمبيوتر ولا يتطلب التسجيل.","email":"snaptikltd@gmail.com"}</script>
 </body>
