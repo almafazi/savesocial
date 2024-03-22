@@ -251,7 +251,7 @@
 <script type="text/javascript">var url = '{{ url('/') }}';</script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('snaptik/assets/js/main.js') }}?v=3" type="text/javascript"></script>
+<script src="{{ asset('snaptik/assets/js/main.js') }}?v=4" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
 <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"TTiktok Video Downloader sem marca d'água grátis - SnapTik é uma das melhores ferramentas gratuitas disponíveis online para baixar vídeos TikTok sem marca d'água em todos os dispositivos sem precisar se registrar.","email":"snaptikltd@gmail.com"}</script>
 </body>
