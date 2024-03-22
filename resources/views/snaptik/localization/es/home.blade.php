@@ -265,7 +265,7 @@
 <script type="text/javascript">var url = '{{ url('/') }}';</script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('snaptik/assets/js/main.js') }}?v=4" type="text/javascript"></script>
+<script src="{{ asset('snaptik/assets/js/main.js') }}?v=5" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
 <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"Herramientas de descarga de videos de TikTok: SnapTik es un descargador de videos de TikTok en línea que permite a los usuarios descargar videos de TikTok sin marca de agua de forma rápida y sencilla. Snaptik es compatible con múltiples dispositivos, incluidos teléfonos móviles, tabletas y computadoras, no es necesario registrarse.","email":"snaptikltd@gmail.com"}</script>
 </body>

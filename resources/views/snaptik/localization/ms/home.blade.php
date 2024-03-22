@@ -241,7 +241,7 @@
 <script type="text/javascript">var url = '{{ url('/') }}';</script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('snaptik/assets/js/main.js') }}?v=4" type="text/javascript"></script>
+<script src="{{ asset('snaptik/assets/js/main.js') }}?v=5" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
 <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"Tiktok Video Downloader no Watermark Free - SnapTik ialah salah satu alat percuma terbaik yang tersedia dalam talian untuk Memuat turun video TikTok tanpa tera air pada semua peranti tanpa perlu mendaftar.","email":"snaptikltd@gmail.com"}</script>
 </body>
