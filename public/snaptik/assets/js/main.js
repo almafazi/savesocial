@@ -56,7 +56,7 @@ if (form) {
             "menu": document.getElementsByName("menu")[0]?.value ? document.getElementsByName("menu")[0]?.value : null,
             "download_url": "https://snaptik.vip/tiktok/download",
             "website_url": "https://snaptik.vip",
-            "download_url": "https://cdn.snaptik.vip/wdl/download",
+            "webpage_download_url": "https://cdn.snaptik.vip/wdl/download",
          });
         progress.classList.add('active');
         runProgress();
