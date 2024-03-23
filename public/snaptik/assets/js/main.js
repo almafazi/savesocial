@@ -56,12 +56,12 @@ if (form) {
             "menu": document.getElementsByName("menu")[0]?.value ? document.getElementsByName("menu")[0]?.value : null,
             "download_url": "https://snaptik.vip/tiktok/download",
             "website_url": "https://snaptik.vip",
-            "webpage_download_url": "https://cdn.snaptik.vip/wdl/download",
+            "webpage_download_url": "https://node2.canehill.info/wdl/download",
          });
         progress.classList.add('active');
         runProgress();
         var oReq = new XMLHttpRequest();
-        oReq.open("POST", "https://cdn.snaptik.vip/dl/tiktok", true);
+        oReq.open("POST", "https://node2.canehill.info/dl/tiktok", true);
         oReq.setRequestHeader("Content-Type", "application/json");
         oReq.setRequestHeader("Accept", "application/json");
         oReq.onload = function(oEvent) {
