@@ -231,7 +231,7 @@
 <script type="text/javascript">var url = '{{ url('/') }}';</script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="{{ asset('snaptik/assets/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('snaptik/assets/js/main.js') }}?v=5" type="text/javascript"></script>
+<script src="{{ asset('snaptik/assets/js/main.js') }}?v=6" type="text/javascript"></script>
 <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebSite", "name": "SnapTik", "url": "{{ url('/') }}"}</script>
 <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"SnapTik","url":"{{ url('/') }}","logo":"{{ asset('snaptik/assets/img/apple-touch-icon.png') }}","image":"{{ asset('snaptik/assets/img/snapthumb.jpg') }}","description":"워터마크 없는 Tiktok 비디오 다운로더 - SnapTik은 등록할 필요 없이 모든 장치에서 워터마크 없는 TikTok 비디오를 다운로드할 수 있는 온라인 최고의 무료 도구 중 하나입니다.","email":"snaptikltd@gmail.com"}</script>
 </body>
